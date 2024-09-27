@@ -1,10 +1,23 @@
+//Express import
 const express = require("express")
 const app = express()
+const bodyParser = require("body-parser")
 
+//Set engine and public path
 app.set("view engine", "ejs")
 app.use(express.static("public"))
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
+//Database connection and models
 const connection = require("./database/database")
+const usuarioModel = require("./database/usuarioModel")
+
+//Routers
+const usuarioRouter = require("./routes/usuario")
+
+//Set routers on app
+app.use(usuarioRouter)
 
 connection.authenticate()
     .then(() => {
@@ -15,17 +28,7 @@ connection.authenticate()
     })
 
 app.get("/", (req,res)=>{
-    res.send("Rota Home")
-})
-
-app.get("/cadastro", (req,res)=>{
-    let email = req.body.email
-    let senha = req.body.senha
-    let nome = req.body.nome
-    let cpf = req.body.cpf ?? null
-    let telefone = req.body.telefone ?? null
-
-    
+    res.render("index")
 })
 
 app.listen(8181, (erro) => {
