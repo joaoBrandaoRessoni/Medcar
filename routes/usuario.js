@@ -66,8 +66,4 @@ usuarioRouter.get("/login", (req, res) => {
     res.render("login")
 })
 
-usuarioRouter.get("/", (req, res) => {
-    res.render("home")
-})
-
 module.exports = usuarioRouter
