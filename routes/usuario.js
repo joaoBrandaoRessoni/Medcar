@@ -6,8 +6,8 @@ usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
     let senha = req.body.senha
     let nome = req.body.nome
-    let cpf = req.body.cpf ?? null
-    let celular = req.body.celular ?? null
+    // let cpf = req.body.cpf ?? null
+    // let celular = req.body.celular ?? null
 
     usuarioModel.create({
         email: email,
@@ -24,10 +24,10 @@ usuarioRouter.post("/createUser", (req,res)=>{
 
 usuarioRouter.post("/updateUser", (req,res) => {
     let email = req.body.email
-    let senha = req.body.senha ?? null
-    let nome = req.body.nome ?? null
-    let cpf = req.body.cpf ?? null
-    let celular = req.body.celular ?? null
+    // let senha = req.body.senha ?? null
+    // let nome = req.body.nome ?? null
+    // let cpf = req.body.cpf ?? null
+    // let celular = req.body.celular ?? null
 
     usuarioModel.update({
         senha: senha,
