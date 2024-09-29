@@ -41,7 +41,7 @@ usuarioRouter.post("/updateUser", (req,res) => {
     })
 })
 
-usuarioRouter.get("/login", (req,res) => {
+usuarioRouter.post("/login", (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
 
@@ -60,6 +60,10 @@ usuarioRouter.get("/login", (req,res) => {
 
 usuarioRouter.get("/register", (req, res) => {
     res.render("index")
+})
+
+usuarioRouter.get("/login", (req, res) => {
+    res.redirect("home")
 })
 
 module.exports = usuarioRouter
