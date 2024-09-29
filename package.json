@@ -1,0 +1,22 @@
+{
+  "name": "medcar",
+  "version": "1.0.0",
+  "description": "Projeto da medcar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon app.js",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "body-parser": "1.20.3",
+    "ejs": "3.1.10",
+    "express": "4.21.0",
+    "mysql2": "^3.11.3",
+    "nodemon": "3.1.7",
+    "sequelize": "6.37.3"
+  }
+}
