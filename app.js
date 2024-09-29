@@ -28,7 +28,7 @@ connection.authenticate()
     })
 
 app.get("/", (req,res)=>{
-    res.render("index")
+    res.render("home")
 })
 
 app.listen(8181, (erro) => {

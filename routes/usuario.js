@@ -18,7 +18,7 @@ usuarioRouter.post("/createUser", (req,res)=>{
     }).then(() => {
         res.send("Usuario criado")
     }).catch((erro) => {
-        res.sendStatus(500)
+        res.send("Usuário já existe <br />" + erro)
     })
 })
 
@@ -41,8 +41,25 @@ usuarioRouter.post("/updateUser", (req,res) => {
     })
 })
 
-usuarioRouter.post("/login", (req,res) => {
-    
+usuarioRouter.get("/login", (req,res) => {
+    let email = req.body.email
+    let senha = req.body.senha
+
+    usuarioModel.findOne({
+        where:{email: email, senha: senha}
+    }).then((usuarioModel)=>{
+        if(email && senha){
+            res.render("/home")
+        }else if(email == '' || senha == '' ) {
+            res.redirect("/")
+        }
+    }).catch((erro) => {
+        res.redirect("/")
+    })
+})
+
+usuarioRouter.get("/register", (req, res) => {
+    res.render("index")
 })
 
 module.exports = usuarioRouter
