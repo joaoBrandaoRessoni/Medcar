@@ -63,11 +63,11 @@ usuarioRouter.get("/register", (req, res) => {
 })
 
 usuarioRouter.get("/login", (req, res) => {
-    res.redirect("login")
+    res.render("login")
 })
 
 usuarioRouter.get("/", (req, res) => {
-    res.redirect("home")
+    res.render("home")
 })
 
 module.exports = usuarioRouter

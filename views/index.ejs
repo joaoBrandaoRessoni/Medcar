@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/src/css/tailwind.css">
-</head>
-<body>
+<%- include('partials/header.ejs') %>
+
     <form action="/createUser" method="post">
         <input type="email" name="email" type="email" required>
         <input type="senha" name="senha" required>
@@ -16,5 +9,5 @@
 
         <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+
+<%- include('partials/footer.ejs') %>
