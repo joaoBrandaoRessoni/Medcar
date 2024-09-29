@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 //Database connection and models
-// const connection = require("./database/database")
-// const usuarioModel = require("./database/usuarioModel")
+const connection = require("./database/database")
+const usuarioModel = require("./database/usuarioModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
@@ -19,13 +19,13 @@ const usuarioRouter = require("./routes/usuario")
 //Set routers on app
 app.use(usuarioRouter)
 
-// connection.authenticate()
-//     .then(() => {
-//         console.log("Conectado ao banco")
-//     })
-//     .catch(erro=>{
-//         console.log("Não foi possivel conectar")
-//     })
+connection.authenticate()
+    .then(() => {
+        console.log("Conectado ao banco")
+    })
+    .catch(erro=>{
+        console.log("Não foi possivel conectar")
+    })
 
 app.get("/", (req,res)=>{
     res.render("home")
