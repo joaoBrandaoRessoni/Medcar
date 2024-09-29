@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/src/css/tailwind.css">
 </head>
 <body>
-    <form action="/updateUser" method="post">
-        <input type="email" name="email">
-        <input type="senha" name="senha">
+    <form action="/createUser" method="post">
+        <input type="email" name="email" type="email" required>
+        <input type="senha" name="senha" required>
+        <input type="nome" name="nome" required>
         <input type="celular" name="celular">
         <input type="cpf" name="cpf">
-        <input type="nome" name="nome">
 
         <button type="submit">Enviar</button>
     </form>
