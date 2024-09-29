@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,7 @@
     "axios": "^1.7.7",
     "body-parser": "1.20.3",
     "ejs": "3.1.10",
-    "express": "4.21.0",
+    "express": "^4.21.0",
     "mysql2": "^3.11.3",
     "nodemon": "3.1.7",
     "sequelize": "6.37.3"
