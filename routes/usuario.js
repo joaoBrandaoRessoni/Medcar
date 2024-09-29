@@ -63,6 +63,10 @@ usuarioRouter.get("/register", (req, res) => {
 })
 
 usuarioRouter.get("/login", (req, res) => {
+    res.redirect("login")
+})
+
+usuarioRouter.get("/", (req, res) => {
     res.redirect("home")
 })
 
