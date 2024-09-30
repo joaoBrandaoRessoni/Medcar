@@ -47,10 +47,10 @@ usuarioRouter.post("/login", (req,res) => {
 
     usuarioModel.findOne({
         where:{email: email, senha: senha}
-    }).then((usuarioModel)=>{
-        if(email && senha){
-            res.render("/home")
-        }else if(email == '' || senha == '' ) {
+    }).then((user)=>{
+        if(user.email && user.senha){
+            res.render("home")
+        }else {
             res.redirect("/")
         }
     }).catch((erro) => {
@@ -64,10 +64,6 @@ usuarioRouter.get("/register", (req, res) => {
 
 usuarioRouter.get("/login", (req, res) => {
     res.render("login")
-})
-
-usuarioRouter.get("/", (req, res) => {
-    res.render("home")
 })
 
 module.exports = usuarioRouter
