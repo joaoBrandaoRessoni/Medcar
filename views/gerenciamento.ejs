@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs') %>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <td><%= user.email %></td>
+                <td><%= user.nome %></td>
+                <td><%= user.cpf ?? "Não informado" %></td>
+                <td><%= user.celular ?? "Não informado" %></td>
+                <td>
+                    <a href="/deleteUser/<%= user.email %>">Deletar</a>
+                </td>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer.ejs') %>

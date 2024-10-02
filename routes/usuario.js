@@ -16,28 +16,26 @@ usuarioRouter.post("/createUser", (req,res)=>{
         cpf:cpf,
         celular:celular
     }).then(() => {
-        res.send("Usuario criado")
+        res.redirect("/")
     }).catch((erro) => {
-        res.send("Usuário já existe <br />" + erro)
+        res.redirect("/register/Email já cadastrado")
     })
 })
 
 usuarioRouter.post("/updateUser", (req,res) => {
     let email = req.body.email
-    let senha = req.body.senha ?? null
-    let nome = req.body.nome ?? null
-    let cpf = req.body.cpf ?? null
-    let celular = req.body.celular ?? null
+    let senha = req.body.senha
 
     usuarioModel.update({
         senha: senha,
-        nome: nome,
-        cpf:cpf,
-        celular:celular
-    }, {where: {email: email}}).then(() => {
-        return res.redirect("/")
+    }, {where: {email: email}}).then((num) => {
+        if(num == 0){
+            return res.redirect("/forgetPassword/Usuario não encontrado")
+        }else{
+            return res.redirect("/allUsers")
+        }
     }).catch((erro) => {
-        res.sendStatus(500)
+        return res.redirect("/forgetPassword/Não foi possível atualizar")
     })
 })
 
@@ -48,22 +46,30 @@ usuarioRouter.post("/login", (req,res) => {
     usuarioModel.findOne({
         where:{email: email, senha: senha}
     }).then((user)=>{
-        if(user.email && user.senha){
-            res.render("home")
-        }else {
+        if(user){
             res.redirect("/")
+        }else {
+            res.render("login", {msg: "Usuario não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
     })
 })
 
-usuarioRouter.get("/register", (req, res) => {
-    res.render("index")
+usuarioRouter.get("/deleteUser/:email", (req,res) => {
+    let email = req.params.email
+    usuarioModel.destroy({
+        where: {email:email}
+    }).then(() => {
+        res.redirect("/allUsers")
+    }).catch(() => {
+        res.redirect("/allUsers")
+    })
 })
 
-usuarioRouter.get("/login", (req, res) => {
-    res.render("login")
+usuarioRouter.get("/forgetPassword/:msg?", (req,res) => {
+    let msg = req.params.msg ?? null
+    res.render("changePassword", {msg})
 })
 
 module.exports = usuarioRouter

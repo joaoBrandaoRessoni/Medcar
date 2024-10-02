@@ -31,6 +31,21 @@ app.get("/", (req,res)=>{
     res.render("home")
 })
 
+app.get("/register/:msg?", (req, res) => {
+    let msg = req.params.msg ?? null
+    res.render("index", {msg})
+})
+
+app.get("/login", (req, res) => {
+    res.render("login", {msg: ""})
+})
+
+app.get("/allUsers", (req,res) => {
+    usuarioModel.findAll().then((users) => {
+        res.render("gerenciamento", {users})
+    })
+})
+
 app.listen(8181, (erro) => {
     if(erro){
         console.log("Erro")
