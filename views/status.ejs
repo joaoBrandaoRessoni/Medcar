@@ -1,0 +1,72 @@
+<%- include('partials/header.ejs') %>
+
+<div class="m-10 mx-52 flex justify-between items-end">
+    <div class="">
+      <div class="flex items-center gap-5">
+        <img src="https://s3-alpha-sig.figma.com/img/e580/e546/f84cf91ca1d9e07362eb3a35ea2278fc?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kKPEy0o-RE4K1virSDpuGnemeGVjdG56JcowlcahjEhS4ejQJR7ko0Llt4xnHrujvMgubcIFnVWIrtYRzpPLjrt3~SOaGx7jhTxCjhxWfclEy~5e6pwKcpK4nJxxLDTVJy896cs~1~l2p6T-sHIHx9ZJkdbzkcIKAymNGb6aHx-jwTAND3m-EoHwWjuPtLovuskWQ4ytIzHDWQJVKFyOgF1711i0r1Wv~sSszuZpoZhBl50hNqBDTC96JfOmOCqF5lXpmfQxOGsgITzr4Wz~1XmBQbDaK3o2OLqGlZyJYGLe5P7KfYhNYI6DaYaY0BSddJOgrlxW0IDO4DCXsfwOsg__" alt="" class="size-32 rounded-full" />
+        <div>
+          <p class="font-semibold">Matheus Reis</p>
+          <p>Saveiro 2019</p>
+        </div>
+      </div>
+      <div class="mt-10">
+        <p><span class="font-semibold">Modelo:</span> Saveiro</p>
+        <p><span class="font-semibold">Placa:</span> CDR 1G57</p>
+        <p><span class="font-semibold">Cor:</span> Branca</p>
+        <p><span class="font-semibold">Manutenção:</span> Revisão</p>
+        <p><span class="font-semibold">Orçamento:</span> R$ 290,00</p>
+        <p><span class="font-semibold">Data de entrada:</span> 14/09/2024</p>
+        <p><span class="font-semibold">Prazo:</span> 2 dias</p>
+        <p><span class="font-semibold">Data de saída:</span> 23/09/2024</p>
+        <p><span class="font-semibold">Valor total:</span> R$ 290,00</p>
+      </div>
+    </div>
+    <div class="w-96">
+      <h1 class="text-xl">Status do seu carro:</h1>
+      <div class="mt-5 flex items-center gap-5">
+        <div class="flex w-48 items-center justify-between rounded-md bg-green-400 px-1.5 py-2 text-white">
+          <button class="">Aguardando iniciar</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+        <p>Concluído</p>
+      </div>
+      <div class="mt-3 flex items-center gap-5">
+        <div class="flex w-80 items-center justify-between rounded-md bg-red-500 px-1.5 py-2 text-white">
+          <button class="">Manutenção iniciada</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+        <p>Foi iniciada a manutenção do seu veículo</p>
+      </div>
+      <div class="mt-3 flex items-center gap-5">
+        <div class="flex w-48 items-center justify-between rounded-md bg-gray-400 px-1.5 py-2 text-white">
+          <button class="">Em processo</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+      </div>
+      <div class="mt-3 flex items-center gap-5">
+        <div class="flex w-48 items-center justify-between rounded-md bg-gray-400 px-1.5 py-2 text-white">
+          <button class="">Quase finalizado</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+      </div>
+      <div class="mt-3 flex items-center gap-5">
+        <div class="flex w-48 items-center justify-between rounded-md bg-gray-400 px-1.5 py-2 text-white">
+          <button class="">Finalizado</button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
+  

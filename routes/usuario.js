@@ -56,6 +56,10 @@ usuarioRouter.post("/login", (req,res) => {
     })
 })
 
+usuarioRouter.get("/status", (req,res) => {
+    res.render("status")
+})
+
 usuarioRouter.get("/deleteUser/:email", (req,res) => {
     let email = req.params.email
     usuarioModel.destroy({
