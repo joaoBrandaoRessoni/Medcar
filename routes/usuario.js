@@ -47,7 +47,7 @@ usuarioRouter.post("/login", (req,res) => {
         where:{email: email, senha: senha}
     }).then((user)=>{
         if(user){
-            res.redirect("/")
+            res.redirect("/status")
         }else {
             res.render("login", {msg: "Usuario não encontrado"})
         }
