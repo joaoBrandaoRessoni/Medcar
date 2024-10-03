@@ -48,10 +48,21 @@ usuarioRouter.post("/login", (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
 
+    const jwt = require("jsonwebtoken")
+
     usuarioModel.findOne({
         where:{email: email, senha: senha}
     }).then((user)=>{
         if(user){
+            const user = {
+                email: "joao@has.com",
+                nome: "Joao",
+                senha: "123"
+            }
+            const token = jwt.sign(user, "shh")
+            res.cookie("jwt", token, {
+                httpOnly: true
+            })
             res.redirect("/status")
         }else {
             res.redirect("login/Usuario não encontrado")

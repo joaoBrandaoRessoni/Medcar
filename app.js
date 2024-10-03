@@ -3,7 +3,6 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
-const jsonwebtoken = require("jsonwebtoken")
 
 //Set engine and public path
 app.set("view engine", "ejs")
@@ -13,9 +12,6 @@ app.use(bodyParser.json())
 
 //Set cookie parser
 app.use(cookieParser())
-
-//Set jsonwebtoken
-app.use(jsonwebtoken())
 
 //middleware
 const auth = require("./middleware/auth")
