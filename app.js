@@ -2,6 +2,7 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const nodemailer = require("nodemailer");
 
 //Set engine and public path
 app.set("view engine", "ejs")
@@ -26,6 +27,38 @@ connection.authenticate()
     .catch(erro=>{
         console.log("Não foi possivel conectar")
     })
+
+var remetente = nodemailer.createTransport({
+    host: 'localhost',
+    service: 'localhost:8181/',
+    port: 8181,
+    secure: false, 
+    auth:{ 
+        user: 'marialuiza@nerypinto@yahoo.com.br',
+        pass: '1234'
+    },
+    tls: {
+        ciphers:'SSLv3'
+    }
+})
+
+var emailASerEnviado = {
+    from: 'marialuiza@nerypinto@yahoo.com.br',
+    to: 'joao_ressoni@hotmail.com',
+    subject: 'Enviando Email com Node.js teste',
+    text: 'Estou te enviando este email com node.js'
+}
+
+app.get("/email", (req, res)=>{
+    remetente.sendMail(emailASerEnviado, function(error){
+        if (error) {
+            console.log("Erro do email")
+            console.log(error);
+        } else {
+            console.log('Email enviado com sucesso.');
+        }
+    });
+})
 
 app.get("/", (req,res)=>{
     res.render("home")
