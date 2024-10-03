@@ -47,13 +47,17 @@ usuarioRouter.post("/login", (req,res) => {
         where:{email: email, senha: senha}
     }).then((user)=>{
         if(user){
-            res.redirect("/")
+            res.redirect("/status")
         }else {
             res.render("login", {msg: "Usuario não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
     })
+})
+
+usuarioRouter.get("/status", (req,res) => {
+    res.render("status")
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {
