@@ -16,6 +16,16 @@ usuarioRouter.post("/createUser", (req,res)=>{
         cpf:cpf,
         celular:celular
     }).then(() => {
+        const usuario = {
+            email: email,
+            nome: nome,
+            senha: senha,
+            exp: Date.now() + 60000,
+        }
+        const token = jwt.sign(usuario, process.env.SECRET_KEY)
+        res.cookie("medcar_token", token, {
+            httpOnly: true,
+        })
         res.redirect("/")
     }).catch((erro) => {
         if(erro.errors.ValidationErrorItem.type == "unique violation"){
@@ -54,14 +64,15 @@ usuarioRouter.post("/login", (req,res) => {
         where:{email: email, senha: senha}
     }).then((user)=>{
         if(user){
-            const user = {
-                email: "joao@has.com",
-                nome: "Joao",
-                senha: "123"
+            const usuario = {
+                email: user.email,
+                nome: user.nome,
+                senha: user.senha,
+                exp: Date.now() + 60000,
             }
-            const token = jwt.sign(user, "shh")
-            res.cookie("jwt", token, {
-                httpOnly: true
+            const token = jwt.sign(usuario, process.env.SECRET_KEY)
+            res.cookie("medcar_token", token, {
+                httpOnly: true,
             })
             res.redirect("/status")
         }else {
