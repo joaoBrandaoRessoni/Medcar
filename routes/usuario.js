@@ -20,7 +20,7 @@ usuarioRouter.post("/createUser", (req,res)=>{
             email: email,
             nome: nome,
             senha: senha,
-            exp: Date.now() + 60000,
+            exp: Date.now() + (60000 * 60),
         }
         const token = jwt.sign(usuario, process.env.SECRET_KEY)
         res.cookie("medcar_token", token, {
@@ -68,7 +68,7 @@ usuarioRouter.post("/login", (req,res) => {
                 email: user.email,
                 nome: user.nome,
                 senha: user.senha,
-                exp: Date.now() + 60000,
+                exp: Date.now() + (60000 * 60),
             }
             const token = jwt.sign(usuario, process.env.SECRET_KEY)
             res.cookie("medcar_token", token, {
