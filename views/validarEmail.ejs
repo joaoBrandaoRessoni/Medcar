@@ -18,9 +18,9 @@
                     <input type="email" name="email" class="h-10 w-full rounded-e-lg border border-gray-500 bg-slate-400/30 p-3 text-gray-800 placeholder:text-gray-600" placeholder="Email" required/>
                 </label>
             </div>
-            <b style="text-align: center; display: block;"> <%= msg ?? "" %> </b>
+            <p class="mt-7 text-sm text-red-600"><%= msg ?? "" %></p>
             <div class="mt-10 rounded-lg bg-red-800 px-4 py-2 w-34 text-white mx-auto hover:bg-red-900 cursor-pointer">
-                <button type="submit" id="ativarDiv">Enviar codigo de confirmação</button>
+                <button type="submit" id="ativarDiv">Enviar código de confirmação</button>
             </div>
         </form>
     </div>
@@ -35,7 +35,7 @@
                 </label>
             </div>
             <div class="mt-10 rounded-lg bg-red-800 px-4 py-2 w-34 text-white mx-auto hover:bg-red-900 cursor-pointer">
-                <button type="submit">Validar Codigo</button>
+                <button type="submit">Validar Código</button>
             </div>
         </form>
     </div>
