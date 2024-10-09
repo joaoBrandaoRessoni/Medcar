@@ -1,3 +1,15 @@
-<h1>Ops!!</h1>
-<h2><%= erro_mensagem %></h2>
-<a href="/">Voltar para o início</a>
+<%- include('/Users/Maria/Desktop/Medcar/views/partials/header.ejs') %>
+
+</main>
+    <div class="mx-auto w-fit my-52 py-10 px-16 rounded-3xl bg-slate-200/30 text-center">
+        <h1 class="text-2xl font-semibold">Opa!</h1>
+        <div class="mx-auto">
+            <form action="/createUser" method="post">
+                <p class="mt-7 text-center"><%= erro_mensagem %></p>
+                <button type="submit" class="mx-auto mt-8 w-44 cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white hover:bg-red-900">Voltar para o inicio</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('/Users/Maria/Desktop/Medcar/views/partials/footer.ejs') %>
