@@ -64,9 +64,6 @@ usuarioRouter.post("/validarEmail", (req,res) => {
             auth:{
                 user: 'igor.pirola@sou.fae.br',
                 pass: 'vklswiwxmzjhhnug',
-            },
-            tls: {
-                ciphers:'SSLv3'
             }
         })
 
@@ -100,8 +97,7 @@ usuarioRouter.post("/validarCodigo", (req, res)=>{
         if(!cad){
             res.render("validarEmail", {msg: "Codigo invalido"})
         }else{
-
-            res.redirect(`changePassword?codigo=${codigo}`)
+            res.render("changePassword", {codigo: codigo})
         }
     })
 })
@@ -118,6 +114,7 @@ usuarioRouter.post("/changePass", async (req, res)=> {
         { senha: newPass },
         { where: {email: email}}
     ).then(() =>{
+        
         res.redirect("/")
     })
 
@@ -153,14 +150,6 @@ usuarioRouter.get("/deleteUser/:email", (req,res) => {
     }).catch(() => {
         res.redirect("/allUsers")
     })
-})
-
-usuarioRouter.get("/changePassword", (req, res) => {
-    const codigo = req.query.codigo;
-    console.log("codigo da query: "+ codigo)
-    if (codigo) {
-        res.render("changePassword", {codigo: codigo})
-    }
 })
 
 usuarioRouter.get("/forgetPassword/:msg?", (req,res) => {
