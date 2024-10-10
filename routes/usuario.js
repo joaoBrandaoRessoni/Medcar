@@ -19,9 +19,24 @@ usuarioRouter.post("/createUser", (req,res)=>{
         cpf:cpf,
         celular:celular
     }).then(() => {
+        const usuario = {
+            email: email,
+            nome: nome,
+            senha: senha,
+            exp: Date.now() + (60000 * 60),
+        }
+        const token = jwt.sign(usuario, process.env.SECRET_KEY)
+        res.cookie("medcar_token", token, {
+            httpOnly: true,
+        })
         res.redirect("/")
     }).catch((erro) => {
-        res.redirect("/register/Email já cadastrado")
+        if(erro.errors[0].type == "unique violation"){
+            res.redirect("/register/Email já cadastrado")
+        }else{
+            res.redirect("/register/Não foi possível fazer o cadastro")
+        }
+        
     })
 })
 
@@ -124,13 +139,25 @@ usuarioRouter.post("/login", (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
 
+    const jwt = require("jsonwebtoken")
+
     usuarioModel.findOne({
         where:{email: email, senha: senha}
     }).then((user)=>{
         if(user){
+            const usuario = {
+                email: user.email,
+                nome: user.nome,
+                senha: user.senha,
+                exp: Date.now() + (60000 * 60),
+            }
+            const token = jwt.sign(usuario, process.env.SECRET_KEY)
+            res.cookie("medcar_token", token, {
+                httpOnly: true,
+            })
             res.redirect("/status")
         }else {
-            res.render("login", {msg: "Usuario não encontrado"})
+            res.render("err/erro_mensagem", {erro_mensagem: "Usúário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")

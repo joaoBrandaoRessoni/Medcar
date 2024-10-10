@@ -2,12 +2,20 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 //Set engine and public path
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+
+//Set cookie parser
+app.use(cookieParser())
+
+//middleware
+const auth = require("./middleware/auth")
+app.use(auth)
 
 //Database connection and models
 const connection = require("./database/database")
