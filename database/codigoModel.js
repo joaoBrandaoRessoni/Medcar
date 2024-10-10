@@ -5,11 +5,11 @@ const codigo = connection.define('codigo', {
     cod:{
         type: sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true
     },
     usuarioEmail:{
         type: sequelize.STRING(100),
         allowNull: false,
-        primaryKey: true
     }
 })
 
