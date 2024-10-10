@@ -28,7 +28,7 @@ usuarioRouter.post("/createUser", (req,res)=>{
         })
         res.redirect("/")
     }).catch((erro) => {
-        if(erro.errors.ValidationErrorItem.type == "unique violation"){
+        if(erro.errors[0].type == "unique violation"){
             res.redirect("/register/Email já cadastrado")
         }else{
             res.redirect("/register/Não foi possível fazer o cadastro")
@@ -76,7 +76,7 @@ usuarioRouter.post("/login", (req,res) => {
             })
             res.redirect("/status")
         }else {
-            res.redirect("login/Usuario não encontrado")
+            res.render("err/erro_mensagem", {erro_mensagem: "Usúário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
