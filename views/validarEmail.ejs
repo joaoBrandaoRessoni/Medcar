@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+
+<div class="mx-auto my-52 h-fit py-7 px-9 size-96 rounded-3xl bg-slate-200/30 text-center">
+    <div class="absolute -mt-20 ml-24 size-28 content-center rounded-full bg-red-800">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-7 size-14 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+    </div>
+    <div class="mx-auto w-72 pt-28">
+        <form action="/validarEmail" method="post">
+            <div class="flex">
+                <div class="self-center rounded-s-lg bg-red-800 px-2.5 py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                </div>
+                <label class="w-full">
+                    <input type="email" name="email" class="h-10 w-full rounded-e-lg border border-gray-500 bg-slate-400/30 p-3 text-gray-800 placeholder:text-gray-600" placeholder="Email" required/>
+                </label>
+            </div>
+            <p class="mt-7 text-sm text-red-600"><%= msg ?? "" %></p>
+            <div class="mt-10 rounded-lg bg-red-800 px-4 py-2 w-34 text-white mx-auto hover:bg-red-900 cursor-pointer">
+                <button type="submit" id="ativarDiv">Enviar código de confirmação</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mx-auto my-52 h-fit py-7 px-9 size-96 rounded-3xl bg-slate-200/30 text-center" id="cod">
+    <div class="mx-auto w-72 pt-28">
+        <form action="/validarCodigo" method="post">
+            <div class="flex">
+                <label class="w-full">
+                    <input type="text" name="codigo" class="h-10 w-full rounded-e-lg border border-gray-500 bg-slate-400/30 p-3 text-gray-800 placeholder:text-gray-600" placeholder="Codigo">
+                </label>
+            </div>
+            <div class="mt-10 rounded-lg bg-red-800 px-4 py-2 w-34 text-white mx-auto hover:bg-red-900 cursor-pointer">
+                <button type="submit">Validar Código</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
