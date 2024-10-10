@@ -129,7 +129,9 @@ usuarioRouter.post("/changePass", async (req, res)=> {
         { senha: newPass },
         { where: {email: email}}
     ).then(() =>{
-        
+        codigoModel.destroy({
+            where: {cod: codigo}
+        })
         res.redirect("/")
     })
 
