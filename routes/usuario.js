@@ -9,6 +9,15 @@ usuarioRouter.post("/createUser", (req,res)=>{
     let cpf = req.body.cpf ?? null
     let celular = req.body.celular ?? null
 
+    console.log(email)
+
+    usuarioModel.findOne({where: {email: email}})
+        .then((user) => {
+            if(user != null){
+                res.redirect("/register/Email já cadastrado")
+            }
+        })
+
     usuarioModel.create({
         email: email,
         senha: senha,
@@ -27,13 +36,6 @@ usuarioRouter.post("/createUser", (req,res)=>{
             httpOnly: true,
         })
         res.redirect("/")
-    }).catch((erro) => {
-        if(erro.errors[0].type == "unique violation"){
-            res.redirect("/register/Email já cadastrado")
-        }else{
-            res.redirect("/register/Não foi possível fazer o cadastro")
-        }
-        
     })
 })
 
