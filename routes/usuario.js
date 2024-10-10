@@ -180,7 +180,7 @@ usuarioRouter.get("/deleteUser/:email", (req,res) => {
 })
 
 usuarioRouter.get("/forgetPassword/:msg?", (req,res) => {
-    let msg = req.params.msg ?? null
+    let msg = req.params.msg ?? ""
     res.render("validarEmail", {msg})
 })
 
