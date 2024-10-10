@@ -76,7 +76,7 @@ usuarioRouter.post("/login", (req,res) => {
             })
             res.redirect("/status")
         }else {
-            res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
+            res.render("err/erro_mensagem", {erro_mensagem: "Usúário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
