@@ -3,6 +3,7 @@ const usuarioRouter = express.Router()
 const usuarioModel = require("../database/usuarioModel")
 const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
+const jwt = require('jsonwebtoken')
 
 
 usuarioRouter.post("/createUser", (req,res)=>{
@@ -31,12 +32,16 @@ usuarioRouter.post("/createUser", (req,res)=>{
         })
         res.redirect("/")
     }).catch((erro) => {
-        if(erro.errors[0].type == "unique violation"){
-            res.redirect("/register/Email já cadastrado")
+        if(erro.errors[0].type){
+            if(erro.errors[0].type == "unique violation"){
+                res.redirect("/register/Email já cadastrado")
+            }else{
+                res.redirect("/register/Não foi possível completar o cadastro")
+            }
+            
         }else{
             res.redirect("/register/Não foi possível fazer o cadastro")
         }
-        
     })
 })
 
