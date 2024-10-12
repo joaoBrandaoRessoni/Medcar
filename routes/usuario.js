@@ -142,6 +142,10 @@ usuarioRouter.post("/changePass", async (req, res)=> {
 
 })
 
+usuarioRouter.post("/deslogar", (req,res) => {
+    res.redirect("/")
+})
+
 usuarioRouter.post("/login", (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
