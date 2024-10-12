@@ -7,26 +7,41 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/javascript/menu.js"></script>
 </head>
 <body>
     <header>
-        <div class="flex justify-between py-2 bg-zinc-700 w-full h-16 items-center">
+        <div class="relative flex justify-between py-2 bg-zinc-700 w-full h-16 items-center px-10 lg:px-16">
             <div>
                 <a href="/">
-                    <img src="/img/logo.png" alt="Logo" class="block w-20 h-auto mx-24">
+                    <img src="/img/logo.png" alt="Logo" class="block w-20 h-auto">
                 </a>
             </div>
-            <div class="flex gap-5">
-                <nav>
-                    <a href="/" class="px-4 text-cyan-50 text-base">Home</a>
-                    <a href="" class="px-4 text-cyan-50 text-base">Sobre</a>
-                    <a href="" class="px-4 text-cyan-50 text-base">Serviços</a>
-                    <a href="" class="px-4 text-cyan-50 text-base">Contato</a>
-                    <a href="/allUsers" class="px-4  text-cyan-50 text-base">Gerenciamento</a>
+            <svg id="abrirMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7 lg:hidden text-white hover:opacity-60">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <div id="navbar" class="hidden lg:flex gap-5 text-cyan-50 bg-zinc-700">
+                <nav class="flex flex-col gap-7 lg:flex-row lg:bg-none">
+                    <a href="/" class="hover:opacity-70">Home</a>
+                    <a href="" class="hover:opacity-70">Sobre</a>
+                    <a href="" class="hover:opacity-70">Serviços</a>
+                    <a href="" class="hover:opacity-70">Contato</a>
+                    <a href="/allUsers" class="hover:opacity-70">Gerenciamento</a>
                 </nav>
-                <div>
-                    <a href="/login" class="px-5 text-cyan-50 text-base">Entrar</a>
-                    <a href="/register" class="px-5 text-cyan-50 text-base mr-10">Cadastrar</a>
+                <div class="flex flex-col gap-7 lg:gap-5 lg:flex-row lg:pl-8 mt-7 lg:mt-0">
+                    <% if(login == true){ %>
+                        <div class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                            </svg>
+                            <a href="/login">Sair</a>
+                        </div>
+                    <% }else{ %>
+                        <div>
+                          <a href="/login">Entrar</a>
+                          <a href="/register">Cadastrar</a>
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>

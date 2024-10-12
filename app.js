@@ -37,7 +37,13 @@ connection.authenticate()
     })
 
 app.get("/", (req,res)=>{
-    res.render("home")
+    let token = req.cookies.medcar_token
+    if(token != undefined){
+        res.render("home", {login: true})
+    }
+    else{
+        res.render("home", {login: false})
+    }
 })
 
 app.get("/register/:msg?", (req, res) => {
