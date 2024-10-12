@@ -30,7 +30,7 @@ usuarioRouter.post("/createUser", (req,res)=>{
         res.cookie("medcar_token", token, {
             httpOnly: true,
         })
-        res.redirect("/")
+        res.redirect("/status")
     }).catch((erro) => {
         if(erro.errors[0].type){
             if(erro.errors[0].type == "unique violation"){
@@ -100,7 +100,7 @@ usuarioRouter.post("/validarEmail", (req,res) => {
             if (error) {
                 res.render("validarEmail", {msg: "Erro ao enviar o email, tente novamente mais tarde"})
             }
-            res.render("validarEmail", {msg: "Email enviado"})
+            res.render("validarCodigo", {msg: "Código enviado"})
         })
 
     }).catch((erro) => {
@@ -115,7 +115,7 @@ usuarioRouter.post("/validarCodigo", (req, res)=>{
         where:{cod: codigo}
     }).then((cad)=>{
         if(!cad){
-            res.render("validarEmail", {msg: "Codigo invalido"})
+            res.render("validarCodigo", {msg: "Código inválido"})
         }else{
             res.render("changePassword", {codigo: codigo})
         }
@@ -164,7 +164,7 @@ usuarioRouter.post("/login", (req,res) => {
             })
             res.redirect("/status")
         }else {
-            res.render("err/erro_mensagem", {erro_mensagem: "Usúário não encontrado"})
+            res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
