@@ -20,6 +20,7 @@ app.use(auth)
 //Database connection and models
 const connection = require("./database/database")
 const usuarioModel = require("./database/usuarioModel")
+const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
