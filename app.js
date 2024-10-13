@@ -24,9 +24,11 @@ const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
+const adminRouter = require("./routes/admin")
 
 //Set routers on app
 app.use(usuarioRouter)
+app.use(adminRouter)
 
 //Checking if are logged in
 app.use((req,res,next) => {
@@ -59,12 +61,6 @@ app.get("/register/:msg?", (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render("login", {msg: ""})
-})
-
-app.get("/allUsers", (req,res) => {
-    usuarioModel.findAll().then((users) => {
-        res.render("gerenciamento", {users})
-    })
 })
 
 app.listen(8181, (erro) => {

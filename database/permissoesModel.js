@@ -13,8 +13,8 @@ const permissoes = connection.define('permissoes', {
         type: sequelize.STRING(100),
         allowNull: false
     },
-    emailUsuario: {
-        type: sequelize.STRING(100),
+    descricao: {
+        type: sequelize.STRING(50),
         allowNull: false
     }
 })

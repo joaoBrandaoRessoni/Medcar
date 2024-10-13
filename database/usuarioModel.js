@@ -20,9 +20,9 @@ const usuario = connection.define('usuario', {
         allowNull: true
     },
     senha:{
-        type: sequelize.STRING,
+        type: sequelize.STRING(100),
         allowNull: false
-    }
+    },
 })
 
 usuario.sync({force: false}).then(()=> {
