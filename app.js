@@ -28,6 +28,18 @@ const usuarioRouter = require("./routes/usuario")
 //Set routers on app
 app.use(usuarioRouter)
 
+//Checking if are logged in
+app.use((req,res,next) => {
+    let token = req.cookies.medcar_token
+    if(token != undefined){
+        res.locals.login = true
+    }
+    else{
+        res.locals.login = false
+    }
+    next()
+})
+
 connection.authenticate()
     .then(() => {
         console.log("Conectado ao banco")
