@@ -166,7 +166,7 @@ usuarioRouter.post("/login", (req,res) => {
             const servicos = (await servicosModel.findAll({
                 where: { usuarioEmail: email },
             })).map(servico => servico.descricao) || [];
-            res.render("status", {email: email, servicos: servicos})
+            res.render("status", {servicos: servicos})
         }else {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
@@ -177,9 +177,8 @@ usuarioRouter.post("/login", (req,res) => {
 })
 
 usuarioRouter.get("/status", (req,res) => {
-    email = ''
     servicos = []
-    res.render("status", {email: email, servicos: servicos})
+    res.render("status", {servicos: servicos})
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {

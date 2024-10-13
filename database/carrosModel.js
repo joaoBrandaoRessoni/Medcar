@@ -1,6 +1,6 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
-const servicos = require('./servicosModel')
+const usuario = require('./usuarioModel')
 
 const carros = connection.define('carros', {
     placa: {
@@ -19,14 +19,10 @@ const carros = connection.define('carros', {
 
 })
 
-servicos.belongsTo(carros, {
-    foreignKey: 'placaCarro',
-    targetKey: 'placa',
+carros.belongsTo(usuario, {
+    foreignKey: 'usuarioEmail',
+    targetKey: 'email',
     onDelete: 'CASCADE'
-})
-
-carros.sync({force: false}).then(()=> {
-    console.log("Tabela de carros criada!")
 })
 
 module.exports = carros

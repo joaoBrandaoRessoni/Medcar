@@ -10,7 +10,6 @@
         </div>
       </div>
       <div class="mt-10">
-        <input type="hidden" name="email" value="<%= email %>">
         <p class="mt-2 text-gray-400"><span class="font-semibold">Placa:</span> CDR 1G57</p>
           <span class="font-semibold">Serviço:</span> 
           <% if (Array.isArray(servicos)) { %>
@@ -18,7 +17,7 @@
                 <%= servico %>,
             <% }) %>
           <% } else { %>
-            <p>Sem serviços disponíveis.</p>
+            <p>Sem serviços cadastrados.</p>
           <% } %>
         
         <p class="mt-2 text-gray-400"><span class="font-semibold">Prazo:</span> 2 dias</p>

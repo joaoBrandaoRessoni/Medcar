@@ -1,14 +1,21 @@
 const express = require("express")
 const servicoRouter = express.Router()
-const servicoModel =  require("../database/servicosModel")
 const carrosModel = require("../database/carrosModel")
+const servicoModel =  require("../database/servicosModel")
+const jwt = require('jsonwebtoken')
 
 let servicos = []
 
 servicoRouter.post("/saveservico", (req, res)=>{
     let servico = req.body.inp_servico
     let placa = req.body.inp_placa
-    let email = req.body.inp_email
+    let email;
+    jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY,
+        (erro, decoded) => {
+            email = decoded.email
+        }
+   )
+   console.log(email)
 
     carrosModel.findOne({
         where:{placa: placa}

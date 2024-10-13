@@ -26,8 +26,4 @@ usuarioModel.hasMany(permissoes, {
     onDelete: 'CASCADE'
 })
 
-permissoes.sync({force: false}).then(()=> {
-    console.log("Tabela de permissoes criada!")
-})
-
 module.exports = permissoes
