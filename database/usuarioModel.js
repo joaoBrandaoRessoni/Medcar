@@ -1,5 +1,8 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
+const codigo = require('./codigoModel')
+const carros = require('./carrosModel')
+const servicos = require('./servicosModel')
 
 const usuario = connection.define('usuario', {
     email:{
@@ -20,9 +23,27 @@ const usuario = connection.define('usuario', {
         allowNull: true
     },
     senha:{
-        type: sequelize.STRING,
+        type: sequelize.STRING(255),
         allowNull: false
     }
+})
+
+codigo.belongsTo(usuario, {
+    foreignKey: 'usuarioEmail',
+    targetKey: 'email',
+    onDelete: 'CASCADE'
+})
+
+carros.belongsTo(usuario, {
+    foreignKey: 'usuarioEmail',
+    targetKey: 'email',
+    onDelete: 'CASCADE'
+})
+
+servicos.belongsTo(usuario, {
+    foreignKey: 'usuarioEmail',
+    targetKey: 'email',
+    onDelete: 'CASCADE'
 })
 
 usuario.sync({force: false}).then(()=> {

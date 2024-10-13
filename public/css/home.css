@@ -10,6 +10,15 @@
 
 }
 
+body {
+    background-color: var(--fundo);
+    padding: 0;
+    margin: 0;
+    margin: auto;
+    font-family: var(--fonte);
+}
+
+
 /* Cabeçalho */
 header.cabecalho {
     width: 100%; 
@@ -36,6 +45,7 @@ header.cabecalho.scrolled {
 }
 
 .menuprincipal {
+    height: 70px;
     width: 100%; 
     display: flex;
     justify-content: space-between;
@@ -45,82 +55,189 @@ header.cabecalho.scrolled {
     background-color: var(--black);
 }
 
-body{
-    background-color: var(--fundo);
-    padding: 0;
-    margin: 0;
-    margin: 0 20px ;
+.linkMenu {
+    color: var(--branco);
+    font-family: var(--fonte);
+    padding: 3%;
+    font-size: 15px;
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 5px;
+    /* Espaço entre o texto e a linha */
 }
 
-.divImagem {
-    position: relative;
+.linkMenu:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    /* Altura do sublinhado */
+    background-color: var(--branco);
+    /* Cor do sublinhado */
+    transition: width 0.3s ease-in-out;
+    /* Transição suave */
     width: 100%;
 }
 
-.ftprincipal {
-    width: 100vw;
-    height: 600px;
-}
-
-.conteudo {
+.linkMenu::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%)
+    left: 0;
+    bottom: 0;
+    width: 0;
+    /* Inicialmente sem sublinhado */
+    height: 2px;
+    background-color: var(--branco);
+    /* Cor do sublinhado */
+    transition: width 0.3s ease-in-out;
+    /* Transição suave */
 }
 
-.titPrincipal {
-    color: var(--branco);
-    font-size: 800%;
-    line-height: 100%;
-    text-shadow: 2px 2px 10px var(--black);
-    text-align: justify;
-    animation: fadeInAndFall 1s ease-out forwards;
-
-}
-
-.subtitulo {
-    font-size: 200%;
-    color: var(--branco);
-    text-align: justify;
-    display: flex;
-    text-shadow: 2px 2px 10px var(--black);
-    letter-spacing: 6px;
-    animation: fadeInAndFall 1s ease-out forwards;
-
-}
-
-.divBotoes {
-    margin-top: 20px;
+.menu {
     display: flex;
     flex-direction: row;
-    gap: 80px;
-    margin-top: 12%;
-    justify-content: center;
-
+    align-items: center;
+    gap: 10px;
+    padding: 2%;
+    width: 70%
 }
 
-.botao {
-    background-color: var(--red);
+nav {
+    width: 100%;
+}
+
+.btnMenu {
+    padding: 5px;
+    border: 1px solid var(--red);
+    font-family: var(--fonte);
     color: var(--branco);
-    width: 35%;
-    height: 56px;
-    padding: 1%;
+    width: 90px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.btnMenu:hover {
+    background-color: var(--red);
+}
+
+.linkMenu:hover::after {
+    text-decoration: dotted;
+}
+
+/* Rodape */
+
+.footer-rodape-certo{
+    height:350px;
+    width: 100%;
+    background-color: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 2%;
+
+   
+}
+.footer-rodape{
+    height: auto;
     display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    background-color: var(--black);
+    padding-top: 1.5%
+}
+.icon-rodape{
+    width: 30px;
+    padding: 5px; 
+}
+.icon-rodape:hover{
+    background-color: var(--red);
+    border-radius: 10px;
+}
+.redes-rodape{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.rodape_logo{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.rodape_logo1{
+    width:160px;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+.texto-rodape{
+    font-size: 14px;
+    color: var(--branco);
+    font-family: var(--fonte);
+}
+.item-rodape{
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    border-radius: 5px;
+    width: 30%;
+    height: auto;
+    justify-content: center;
+}
+
+.itemN-rodape{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%; 
+}
+
+
+
+.parteN-rodape{
+    width: 50%;
+    display: flex;
     justify-content: center;
-    font-size: 16px;
-    box-shadow: 2px 2px 10px var(--black);
-    animation: fadeInAndFall 1s ease-out forwards;
+    height: 200px;
 }
-.botao:hover{
-    background-color: var(--black);
+
+.parteNS-rodape{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+.e50-rodape,.lib1-rodape,#e30-rodape{
+    text-decoration: none;
     color: var(--branco);
-    border: 2px solid var(--red);
+    font-size: 13px;
+    font-family: var(--fonte);
+    line-height: 20px;
+    font-family:Arial, Helvetica, sans-serif;
 }
+#e30-rodape:hover{
+    color:var(--red);
+}
+.link-rodape{
+    text-decoration: none;
+}
+
+.link-rodape:hover{
+    text-decoration: none;
+}
+
+.lib1-rodape{
+    line-height: 12px;
+    font-size: 13px;
+    margin: 0 0 10px;
+}
+
+.lib1-rodape:hover{
+    color: var(--red);
+    text-shadow: var(--black);
+}
+
 
 
 

@@ -1,0 +1,58 @@
+<%- include('partials/header.ejs') %>
+
+    <div class="divCadastro">
+        <div style="margin-top: 10%;" class="divForm">
+            <p class="textoPrincipal">Cadastro de Serviços</p>
+            <form action="/saveservico" method="POST" id="servicoForm" >
+                <div class="divServico">
+                    <label for="servico">Serviços</label>
+                    <input list="servicos" id="inp_servico" name="inp_servico" placeholder="Escolha ou insira um serviço" required>
+                    <datalist id="servicos">
+                        <option value="Alinhamento">
+                        <option value="Balanceamento">
+                        <option value="Bateria">
+                        <option value="Cambio Automático">
+                        <option value="Embreagem">
+                        <option value="Freios">
+                        <option value="Injeção Eletrônica">
+                        <option value="Radiador">
+                        <option value="Revisão Preventiva">
+                        <option value="Suspensão">
+                        <option value="Troca de óleo">
+                        <option value="Troca de pneus">
+                    </datalist>
+                </div>
+                <div>
+                    <label for="inp_placa">Placa</label>
+                    <input name="inp_placa" type="text" placeholder="Digite a placa" id="inp_placa">
+                </div>
+                <div>
+                    <label for="inp_email">Email</label>
+                    <input name="inp_email" type="text" placeholder="Digite a placa" id="inp_email">
+                </div>
+                <div>
+                    <button class="btnServico" name="btnAdicionar" type="submit">Adicionar</button>
+                </div>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% servicos.forEach(servico => { %>
+                    <tr>
+                        <td><%= servico.id %></td>
+                        <td><%= servico.descricao %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+<%- include('partials/footer.ejs') %>
+

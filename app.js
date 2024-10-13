@@ -24,9 +24,12 @@ const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
+const servicoRouter = require("./routes/servicos")
 
 //Set routers on app
 app.use(usuarioRouter)
+app.use(servicoRouter)
+
 
 connection.authenticate()
     .then(() => {
@@ -35,6 +38,7 @@ connection.authenticate()
     .catch(erro=>{
         console.log("Não foi possivel conectar")
     })
+
 
 app.get("/", (req,res)=>{
     res.render("home")

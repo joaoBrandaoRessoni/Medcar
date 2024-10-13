@@ -1,0 +1,28 @@
+:root {
+    --red: #AE3232;
+    --black: #202022;
+    --gray: #383838;
+    --gray-light: #C1C1C1;
+    --green: #1E972A;
+    --fundo: #EAEAEA;
+    --branco: #f8f5f5;
+    --fonte: Arial, Helvetica, sans-serif;
+
+}
+
+.divForm{
+  width: 100%;
+  height: 200px;
+  padding: 0 10%;
+  gap: 50px;
+  background-color:teal;
+}
+
+.textoPrincipal{
+    font-family: var(--fonte);
+    font-size: 150%;
+    color: var(--red);
+}
+.divServico{
+   
+}

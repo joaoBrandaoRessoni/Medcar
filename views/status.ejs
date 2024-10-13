@@ -10,8 +10,17 @@
         </div>
       </div>
       <div class="mt-10">
+        <input type="hidden" name="email" value="<%= email %>">
         <p class="mt-2 text-gray-400"><span class="font-semibold">Placa:</span> CDR 1G57</p>
-        <p class="mt-2 text-gray-400"><span class="font-semibold">Serviço:</span> Revisão</p>
+          <span class="font-semibold">Serviço:</span> 
+          <% if (Array.isArray(servicos)) { %>
+            <% servicos.forEach(servico => { %>
+                <%= servico %>
+            <% }) %>
+          <% } else { %>
+            <p>Sem serviços disponíveis.</p>
+          <% } %>
+        
         <p class="mt-2 text-gray-400"><span class="font-semibold">Prazo:</span> 2 dias</p>
         <p class="mt-2 text-gray-400"><span class="font-semibold">Orçamento:</span> R$ 290,00</p>
         <p class="mt-2 text-gray-400"><span class="font-semibold">Data de entrada:</span> 14/09/2024</p>

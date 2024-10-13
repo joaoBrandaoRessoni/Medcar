@@ -589,16 +589,3 @@ nav {
     color: var(--red);
     text-shadow: var(--black);
 }
-
-
-@keyframes fadeInAndFall {
-    0% {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
