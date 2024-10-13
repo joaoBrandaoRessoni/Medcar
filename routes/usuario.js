@@ -151,7 +151,7 @@ usuarioRouter.post("/login", (req,res) => {
 
     usuarioModel.findOne({
         where:{email: email, senha: senha}
-    }).then((user)=>{
+    }).then(async(user)=>{
         if(user){
             const usuario = {
                 email: user.email,
@@ -163,11 +163,9 @@ usuarioRouter.post("/login", (req,res) => {
             res.cookie("medcar_token", token, {
                 httpOnly: true,
             })
-            const servicos = (servicosModel.findAll({
+            const servicos = (await servicosModel.findAll({
                 where: { usuarioEmail: email },
-                attributes: ['descricao']
-            })) || [];
-            console.log(servicos)
+            })).map(servico => servico.descricao) || [];
             res.render("status", {email: email, servicos: servicos})
         }else {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})

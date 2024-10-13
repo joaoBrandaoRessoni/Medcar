@@ -15,7 +15,7 @@
           <span class="font-semibold">Serviço:</span> 
           <% if (Array.isArray(servicos)) { %>
             <% servicos.forEach(servico => { %>
-                <%= servico %>
+                <%= servico %>,
             <% }) %>
           <% } else { %>
             <p>Sem serviços disponíveis.</p>
