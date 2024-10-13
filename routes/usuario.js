@@ -5,7 +5,6 @@ const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
 const jwt = require('jsonwebtoken')
 
-
 usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
     let senha = req.body.senha
@@ -143,6 +142,7 @@ usuarioRouter.post("/changePass", async (req, res)=> {
 })
 
 usuarioRouter.post("/deslogar", (req,res) => {
+    res.clearCookie("medcar_token")
     res.redirect("/")
 })
 

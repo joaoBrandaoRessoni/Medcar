@@ -6,6 +6,16 @@ const auth = (req,res,next) => {
     //Caso a rota estiver na array irá passar direto sem a verificação de JWT
     if(nonSecurePath.includes(req.path)) return next()
 
+    //Checking if are logged in
+    let token = req.cookies.medcar_token
+    if(token != undefined){
+        res.locals.login = true
+    }
+    else{
+        res.locals.login = false
+    }
+    next()
+
     try{
         jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY, null, 
             (erro, decoded) => {
