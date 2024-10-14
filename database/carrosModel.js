@@ -19,11 +19,11 @@ const carros = connection.define('carros', {
 
 })
 
-servicos.belongsTo(carros, {
-    foreignKey: 'placaCarro',
-    targetKey: 'placa',
-    onDelete: 'CASCADE'
-})
+// servicos.belongsTo(carros, {
+//     foreignKey: 'placaCarro',
+//     targetKey: 'placa',
+//     onDelete: 'CASCADE'
+// })
 
 carros.sync({force: false}).then(()=> {
     console.log("Tabela de carros criada!")

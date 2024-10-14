@@ -25,23 +25,23 @@ const usuario = connection.define('usuario', {
     }
 })
 
-codigo.belongsTo(usuario, {
-    foreignKey: 'usuarioEmail',
-    targetKey: 'email',
-    onDelete: 'CASCADE'
-})
+// codigo.belongsTo(usuario, {
+//     foreignKey: 'usuarioEmail',
+//     targetKey: 'email',
+//     onDelete: 'CASCADE'
+// })
 
-carros.belongsTo(usuario, {
-    foreignKey: 'usuarioEmail',
-    targetKey: 'email',
-    onDelete: 'CASCADE'
-})
+// carros.belongsTo(usuario, {
+//     foreignKey: 'usuarioEmail',
+//     targetKey: 'email',
+//     onDelete: 'CASCADE'
+// })
 
-servicos.belongsTo(usuario, {
-    foreignKey: 'usuarioEmail',
-    targetKey: 'email',
-    onDelete: 'CASCADE'
-})
+// servicos.belongsTo(usuario, {
+//     foreignKey: 'usuarioEmail',
+//     targetKey: 'email',
+//     onDelete: 'CASCADE'
+// })
 
 usuario.sync({force: false}).then(()=> {
     console.log("Tabela de usuarios criada!")
