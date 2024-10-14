@@ -1,6 +1,6 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
-const servicos = require('./servicosModel')
+const usuario = require('./usuarioModel')
 
 const carros = connection.define('carros', {
     placa: {
@@ -17,6 +17,12 @@ const carros = connection.define('carros', {
         allowNull: false,
     }
 
+})
+
+servicos.belongsTo(carros, {
+    foreignKey: 'placaCarro',
+    targetKey: 'placa',
+    onDelete: 'CASCADE'
 })
 
 carros.sync({force: false}).then(()=> {

@@ -4,6 +4,9 @@ const app = express()
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
+//Chama todas as tabelas para criar suas chaves estrangeiras na sequencia correta
+const syncTabelas = require("./database/syncTabelas")
+
 //Set engine and public path
 app.set("view engine", "ejs")
 app.use(express.static("public"))
