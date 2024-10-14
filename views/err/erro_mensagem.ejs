@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <div class="mx-auto w-fit my-52 py-10 px-16 rounded-3xl bg-slate-200/30 text-center">
-            <h1 class="text-2xl font-semibold">Opa!</h1>
-            <div class="mx-auto">
-                <form action="/createUser" method="post">
-                    <p class="mt-7 text-center"><%= erro_mensagem %></p>
-                    <button type="submit" class="mx-auto mt-8 w-44 cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white hover:bg-red-900">Voltar para o inicio</button>
-                </form>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medcar</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="h-svh bg-[url('/img/fotoprincipal.png')] backdrop-blur-sm">
+        <div class="py-52">
+            <div class="mx-auto w-fit py-16 px-32 rounded-3xl bg-slate-200/60 text-center">
+                <h1 class="text-3xl font-semibold">Opa!</h1>
+                <div class="mx-auto">
+                    <form action="/createUser" method="post">
+                        <p class="mt-7 mb-10 text-center font-semibold"><%= erro_mensagem %></p>
+                        <a href="/" class="mx-auto cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white hover:bg-red-900">Voltar para o início</a>
+                    </form>
+                </div>
             </div>
         </div>
-    </main>
-</body>
+    </body>
 </html>

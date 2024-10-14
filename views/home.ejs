@@ -1,37 +1,243 @@
-<%- include('partials/header.ejs') %>
+<%- include('partials/headerhome.ejs') %>
 
-<main>
-    <div class="flex flex-col w-full items-center justify-center md:flex-row my-10 mb-5">
-        <div class="w-1/2 text-center items-center">
-            <p class="font-normal text-8xl">MEDCAR</p>
-            <p class="text-4xl font-normal">O médico do seu carro</p>
-        </div>
-        <div class="w-1/2 ml-14 flex items-center justify-center">
-            <img src="/img/medcar.jpg" alt="Medcar" class="block w-4/6 rounded-sm h-auto">
-        </div>
-    </div>
-
-    <div class="flex flex-col w-full h-5/6 p-20 items-center justify-center md:flex-row gap-6 ">
-
-        <div class="w-1/2">
-            <img src="/img/donos.jpg" alt="Donos da empresa Medcar" class="block w-4/6 rounded-sm h-auto">
+    <main>
+        <div class="divPrincipal">
+            <div class="divImagem">
+                <img class="ftprincipal" src="/img/fotoprincipal.png" alt="">
+                <div class="conteudo">
+                    <p class="titPrincipal">MEDCAR</p>
+                    <p class="subtitulo">O MÉDICO DO SEU CARRO</p>
+                    <div class="divBotoes">
+                        <a href="" class="botao">Solicitar orçamento</a>
+                        <a href="" class="botao">Nossos serviços</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="w-1/2 box-border">
-            <h5 class="text-red-800 text-2xl font-semibold text-justify">Quem somos?</h5>
-            <p class="font-normal text-justify">
-                Somos um centro automotivo especializado em mecânica em geral, revisão preventiva,
-                injeção eletrônica, suspensão, alinhamento, balanceamento, pneus, troca de óleo, baterias e
-                sistema de câmbio automático.Oferecemos todo o atendimento corretivo e preventivo para os sistemas mecânicos do seu carro.
-                O Centro Automotivo Medcar está localizado na Rua Joaquim Antonio da Silva, n° 431, Jardim São José em Vargem Grande do Sul. Contamos com uma equipe profissional e especializada na área com o objetivo solucionar os problemas dos nossos clientes de forma eficaz, garantindo serviço de qualidade e a segurança dos nossos clientes. <br>
-                Para nós, a sua segurança e a do seu carro estão em primeiro lugar!
-            </p>
+        <div class="divQuemSomos">
+            <div class="divTexto">
+                <p class="titulo">Quem somos?</p>
+                <p class="sub">
+                    Somos o Centro Automotivo Medcar, especializados em mecânica geral, revisões preventivas, injeção
+                    eletrônica, suspensão, alinhamento, balanceamento, pneus, troca de óleo, baterias e sistemas de
+                    câmbio automático. Oferecemos serviços completos de manutenção corretiva e preventiva para os
+                    sistemas mecânicos do seu veículo. <br>
+                    Localizados na Rua Joaquim Antonio da Silva, nº 431, Jardim São José, Vargem Grande do Sul, contamos
+                    com uma equipe de profissionais altamente qualificados, prontos para resolver qualquer problema de
+                    forma rápida e eficiente. Nosso compromisso é oferecer serviços de alta qualidade, priorizando
+                    sempre a segurança e satisfação dos nossos clientes.
+                    Sua segurança está em primeiro lugar!
+                </p>
+            </div>
+
+            <div class="divFoto">
+                <img class="imgDonos" src="/img/donos.jpg" alt="Foto donos">
+                <figcaption style="font-size: 12px; padding: 10px; margin: auto; ">Dono da Medcar, Alessandro junto com
+                    seu filho e sócio Matheus</figcaption>
+            </div>
+
+
         </div>
 
-       
-    </div>
+        <div class="divStatus">
+            <div class="divEsqStatus">
+                <p class="titulo">Novidade: Status do veículo</p>
+                <p class="sub">
+                    Gostaria de saber em tempo real como está a manutenção do seu veículo?
+                    Agora você pode <strong>acompanhar o status </strong> do seu carro pelo nosso site.
+                    Basta apenas fazer o login e acompanhar.
+                    Agora ficou muito mais prático saber qual o processo seu veículo está!</p>
+            </div>
+
+            <div class="divDirStatus">
+                <img src="/img/status.png" alt="" class="imgStatus">
+            </div>
+        </div>
 
 
-</main>
+        <div class="container">
 
-<%- include('partials/footer.ejs') %>
+            <p class="tituloServico">Nossos serviços</h2>
+            <div class="row">
+
+                <div class="iconeServico">
+                    <a href="servicos.html#servicos" class="link-icones">
+                        <div class="imgContainer">
+                            <img src="/img/alinhamento.jpeg" alt="Imagem de Alinhamento" class="img_box">
+                            <p class="nomeServico">Alinhamento</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/balanceamento.jpg" alt="Imagem de Balanceamento" class="img_box">
+                            <p class="nomeServico">Balanceamento</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/bateria.jpg" alt="Imagem de Bateria" class="img_box">
+                            <p class="nomeServico">Baterias</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/cambio.jpg" alt="Imagem de Balanceamento" class="img_box">
+                            <p class="nomeServico">Câmbio Automático</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/freios.jpg" alt="Imagem de Freios" class="img_box">
+                            <p class="nomeServico">Freios</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/injecao.jpg" alt="Imagem de Injeção Eletrônica" class="img_box">
+                            <p class="nomeServico">Injeção Eletrônica</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/embreagem.jpg" alt="Imagem de Embreagem" class="img_box">
+                            <p class="nomeServico">Embreagem</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/radiador.jpg" alt="Imagem de Radiador" class="img_box">
+                            <p class="nomeServico">Radiador</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/revisao.jpg" alt="Imagem da Revisão Preventiva" class="img_box">
+                            <p class="nomeServico">Revisão Preventiva</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/suspensao.jpg" alt="Imagem de Suspensão" class="img_box">
+                            <p class="nomeServico">Suspensão</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/troca de pneu.jpg" alt="Troca de pneus" class="img_box">
+                            <p class="nomeServico">Troca de Pneus</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="iconeServico">
+                    <div class="imgContainer">
+                        <a href="servicos.html#servicos" class="link-icones">
+                            <img src="/img/troca de óleo.jpg" alt="Imagem de Troca de Óleo" class="img_box">
+                            <p class="nomeServico">Troca de Oléo</p>
+                            <p class="saiba-mais">Saiba mais</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class="galeria">
+                <div class="divGaleria">
+                    <p class="titulo">Galeria</p>
+            </div>
+        </div>
+
+
+        <div class="avaliacao">
+            <div class="divTxtorcamento">
+                <p class="titulo">Avaliações</p>
+                <p class="subtituloAval">Solicite seu orçamento!</p>
+                <p class="sub">Contamos com uma equipe de profissionais qualificados na área. São mais de 38 anos de experiência no mercado de trabalho! Nossos produtos e equipamentos são de marcas que garantem a nossa qualidade. <strong> Parcelamos no cartão até em 10 vezes sem juros.</strong>
+                </p>
+             
+                <div class="divBtnOrcamento">
+                    <a class="btnOrcamento" href="https://api.whatsapp.com/send?phone=5519994647675">Solicite um orçamento</a>
+                </div>
+
+            </div>
+
+            <div class="comentarios">
+                <div class="coment">
+                    <div class="partecima">
+                        <p class="t1">Lucas Rhaiter</p>
+                        <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
+                    </div>
+
+                    <p class="t2">"Excelente profissionais, ótimo atendimento e estão sempre prontos pra atender os clientes na hora que precisamos. O que mais acho legal (honestidade). Parabéns galera!"</p>
+                </div>
+
+
+                <div class="coment">
+                    <div class="partecima">
+                        <p class="t1">Rick D. Camões</p>
+                        <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
+                    </div>
+
+                    <p class="t2">"Profissionais qualificados, equipamentos de última geração, e o mais importante pessoal de extrema confiança! Tudo muito limpo e organizado, além de um Atendimento nota 1000!"</p>
+                </div>
+                <div class="coment">
+                    <div class="partecima">
+                        <p class="t1">Antônio Nascimento</p>
+                        <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
+                    </div>
+
+                    <p class="t2">"Lugar onde se encontra honestidade, serviços pontuais e tem tudo, atendimento camarada e onde os valores são justos."</p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <%- include('partials/footer.ejs') %>

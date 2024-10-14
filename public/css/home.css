@@ -1,0 +1,136 @@
+:root {
+    --red: #AE3232;
+    --black: #202022;
+    --gray: #383838;
+    --gray-light: #C1C1C1;
+    --green: #1E972A;
+    --fundo: #EAEAEA;
+    --branco: #f8f5f5;
+    --fonte: Arial, Helvetica, sans-serif;
+
+}
+
+/* Cabeçalho */
+header.cabecalho {
+    width: 100%; 
+    height: 70px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    transition: all 0.2s ease; 
+    z-index: 1000;
+    padding: 30px 100px;
+    background-color: var(--black); 
+}
+
+
+header.cabecalho.scrolled {
+    background-color: var(--black);
+    height: 70px;
+    /* box-shadow: 0px 10px 10px var(--black); */
+    padding: 30px 100px;
+    width: 100%; 
+}
+
+.menuprincipal {
+    width: 100%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+}
+
+body{
+    background-color: var(--fundo);
+    padding: 0;
+    margin: 0;
+    margin: 0 20px ;
+}
+
+.divImagem {
+    position: relative;
+    width: 100%;
+}
+
+.ftprincipal {
+    width: 100vw;
+    height: 600px;
+}
+
+.conteudo {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%)
+}
+
+.titPrincipal {
+    color: var(--branco);
+    font-size: 800%;
+    line-height: 100%;
+    text-shadow: 2px 2px 10px var(--black);
+    text-align: justify;
+    animation: fadeInAndFall 1s ease-out forwards;
+
+}
+
+.subtitulo {
+    font-size: 200%;
+    color: var(--branco);
+    text-align: justify;
+    display: flex;
+    text-shadow: 2px 2px 10px var(--black);
+    letter-spacing: 6px;
+    animation: fadeInAndFall 1s ease-out forwards;
+
+}
+
+.divBotoes {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    margin-top: 12%;
+    justify-content: center;
+
+}
+
+.botao {
+    background-color: var(--red);
+    color: var(--branco);
+    width: 35%;
+    height: 56px;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px var(--black);
+    animation: fadeInAndFall 1s ease-out forwards;
+}
+.botao:hover{
+    background-color: var(--black);
+    color: var(--branco);
+    border: 2px solid var(--red);
+}
+
+
+
+@keyframes fadeInAndFall {
+    0% {
+        transform: translateY(-10px); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
+}

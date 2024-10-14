@@ -1,6 +1,9 @@
 const express = require("express")
 const usuarioRouter = express.Router()
 const usuarioModel = require("../database/usuarioModel")
+const codigoModel = require("../database/codigoModel")
+const nodemailer = require("nodemailer")
+const jwt = require('jsonwebtoken')
 
 usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
@@ -35,25 +38,121 @@ usuarioRouter.post("/createUser", (req,res)=>{
         res.cookie("medcar_token", token, {
             httpOnly: true,
         })
+        res.redirect("/status")
+    }).catch((erro) => {
+        if(erro.errors[0].type){
+            if(erro.errors[0].type == "unique violation"){
+                res.redirect("/register/Email já cadastrado")
+            }else{
+                res.redirect("/register/Não foi possível completar o cadastro")
+            }
+            
+        }else{
+            res.redirect("/register/Não foi possível fazer o cadastro")
+        }
+    })
+})
+
+usuarioRouter.post("/validarEmail", (req,res) => {
+    let email = req.body.email
+
+    // Gera um código aleatório
+    let codigo = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000
+
+    usuarioModel.findOne({
+        where:{email: email}
+    }).then((user)=>{
+        if(!user){
+            return res.render("validarEmail", {msg: "Email não cadastrado"})
+        }
+
+        // Insere os dados na tabela codigos, para linkar o usuario no codigo e facilitar na validação
+        codigoModel.findOne({
+            where:{usuarioEmail: email}
+        }).then((user)=>{
+            if(!user){
+                codigoModel.create({
+                    usuarioEmail: email,
+                    cod: codigo
+                })
+            }else{
+                codigoModel.update(
+                    { cod: codigo },
+                    { where: { usuarioEmail: email } }
+                )
+            }
+        })
+
+
+        // Configuração do Nodemailer
+        const remetente = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth:{
+                user: 'igor.pirola@sou.fae.br',
+                pass: 'vklswiwxmzjhhnug',
+            }
+        })
+
+        // Configuração do e-mail a ser enviado
+        const emailASerEnviado = {
+            from: 'Medcar <igor.pirola@sou.fae.br>',
+            to: email, 
+            subject: 'Código para reset de senha',
+            html: `<h1>Seu código de verificação é</h1> <h2 style="text-align: center;">${codigo}</h2>`,
+        }
+
+        //Envia o e-mail
+        remetente.sendMail(emailASerEnviado, (error) => {
+            if (error) {
+                res.render("validarEmail", {msg: "Erro ao enviar o email, tente novamente mais tarde"})
+            }
+            res.render("validarCodigo", {msg: "Código enviado"})
+        })
+
+    }).catch((erro) => {
         res.redirect("/")
     })
 })
 
-usuarioRouter.post("/updateUser", (req,res) => {
-    let email = req.body.email
-    let senha = req.body.senha
+usuarioRouter.post("/validarCodigo", (req, res)=>{
+    let codigo = req.body.codigo
 
-    usuarioModel.update({
-        senha: senha,
-    }, {where: {email: email}}).then((num) => {
-        if(num == 0){
-            return res.redirect("/forgetPassword/Usuario não encontrado")
+    codigoModel.findOne({
+        where:{cod: codigo}
+    }).then((cad)=>{
+        if(!cad){
+            res.render("validarCodigo", {msg: "Código inválido"})
         }else{
-            return res.redirect("/allUsers")
+            res.render("changePassword", {codigo: codigo})
         }
-    }).catch((erro) => {
-        return res.redirect("/forgetPassword/Não foi possível atualizar")
     })
+})
+
+usuarioRouter.post("/changePass", async (req, res)=> {
+    const codigo = req.body.codigo;
+
+    let newPass = req.body.newPass
+    let email = (await codigoModel.findOne({
+        where: { cod: codigo }
+    })).usuarioEmail
+
+    usuarioModel.update(
+        { senha: newPass },
+        { where: {email: email}}
+    ).then(() =>{
+        codigoModel.destroy({
+            where: {cod: codigo}
+        })
+        res.redirect("/")
+    })
+
+})
+
+usuarioRouter.post("/deslogar", (req,res) => {
+    res.clearCookie("medcar_token")
+    res.redirect("/")
 })
 
 usuarioRouter.post("/login", (req,res) => {
@@ -78,7 +177,7 @@ usuarioRouter.post("/login", (req,res) => {
             })
             res.redirect("/status")
         }else {
-            res.render("err/erro_mensagem", {erro_mensagem: "Usúário não encontrado"})
+            res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
@@ -102,7 +201,7 @@ usuarioRouter.get("/deleteUser/:email", (req,res) => {
 
 usuarioRouter.get("/forgetPassword/:msg?", (req,res) => {
     let msg = req.params.msg ?? null
-    res.render("changePassword", {msg})
+    res.render("validarEmail", {msg})
 })
 
 module.exports = usuarioRouter

@@ -20,12 +20,25 @@ app.use(auth)
 //Database connection and models
 const connection = require("./database/database")
 const usuarioModel = require("./database/usuarioModel")
+const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
 
 //Set routers on app
 app.use(usuarioRouter)
+
+//Checking if are logged in
+app.use((req,res,next) => {
+    let token = req.cookies.medcar_token
+    if(token != undefined){
+        res.locals.login = true
+    }
+    else{
+        res.locals.login = false
+    }
+    next()
+})
 
 connection.authenticate()
     .then(() => {
