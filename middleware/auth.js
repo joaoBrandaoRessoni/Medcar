@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 const auth = (req,res,next) => {
     //Array com as rotas que não precisam de segurança JWT, sempre coloque '/' seguido do nome da rota 
     const nonSecurePath = ["/", "/login", "/register", "/forgetPassword", "/createUser", "/validarEmail", "/validarCodigo", "/changePass"]
-    //Caso a rota estiver na array irá passar direto sem a verificação de JWT
-    if(nonSecurePath.includes(req.path)) return next()
 
     //Checking if are logged in
     let token = req.cookies.medcar_token
@@ -14,6 +12,9 @@ const auth = (req,res,next) => {
     else{
         res.locals.login = false
     }
+
+    //Caso a rota estiver na array irá passar direto sem a verificação de JWT
+    if(nonSecurePath.includes(req.path)) return next()
 
     try{
         jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY, null, 
