@@ -20,8 +20,13 @@ const usuario = connection.define('usuario', {
         allowNull: true
     },
     senha:{
-        type: sequelize.STRING,
+        type: sequelize.STRING(100),
         allowNull: false
+    },
+    tipo_permissao: {
+        type: sequelize.STRING(100),
+        allowNull: false,
+        defautl: "user"
     }
 })
 

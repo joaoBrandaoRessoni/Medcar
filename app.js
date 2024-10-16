@@ -20,13 +20,14 @@ app.use(auth)
 //Database connection and models
 const connection = require("./database/database")
 const usuarioModel = require("./database/usuarioModel")
-const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
+const adminRouter = require("./routes/admin")
 
 //Set routers on app
 app.use(usuarioRouter)
+app.use(adminRouter)
 
 //Checking if are logged in
 app.use((req,res,next) => {
@@ -48,9 +49,9 @@ connection.authenticate()
         console.log("Não foi possivel conectar")
     })
 
-app.get("/", (req,res)=>{
-    res.render("home")
-})
+    app.get("/", (req,res)=>{
+        res.render("home")
+    })
 
 app.get("/register/:msg?", (req, res) => {
     let msg = req.params.msg ?? null
@@ -59,12 +60,6 @@ app.get("/register/:msg?", (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render("login", {msg: ""})
-})
-
-app.get("/allUsers", (req,res) => {
-    usuarioModel.findAll().then((users) => {
-        res.render("gerenciamento", {users})
-    })
 })
 
 app.listen(8181, (erro) => {
