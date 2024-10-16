@@ -8,17 +8,17 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        </main>
-            <div class="mx-auto w-fit my-52 py-16 px-32 rounded-3xl bg-slate-200/30 text-center">
-                <h1 class="text-2xl font-semibold">Opa!</h1>
+    <body class="h-svh bg-[url('/img/fotoprincipal.png')] backdrop-blur-sm">
+        <div class="py-52">
+            <div class="mx-auto w-fit py-16 px-32 rounded-3xl bg-slate-200/60 text-center">
+                <h1 class="text-3xl font-semibold">Opa!</h1>
                 <div class="mx-auto">
                     <form action="/createUser" method="post">
-                        <p class="my-7 text-center"><%= erro_mensagem %></p>
-                        <a href="/" class="mx-auto mt-7 w-44 cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white hover:bg-red-900">Voltar para o início</a>
+                        <p class="mt-7 mb-10 text-center font-semibold"><%= erro_mensagem %></p>
+                        <a href="/" class="mx-auto cursor-pointer rounded-lg bg-red-800 px-4 py-2 text-white hover:bg-red-900">Voltar para o início</a>
                     </form>
                 </div>
             </div>
-        </main>
+        </div>
     </body>
 </html>

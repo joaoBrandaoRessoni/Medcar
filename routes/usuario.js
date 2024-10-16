@@ -6,7 +6,6 @@ const nodemailer = require("nodemailer")
 const servicosModel =  require("../database/servicosModel")
 const jwt = require('jsonwebtoken')
 
-
 usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
     let senha = req.body.senha
@@ -14,18 +13,29 @@ usuarioRouter.post("/createUser", (req,res)=>{
     let cpf = req.body.cpf ?? null
     let celular = req.body.celular ?? null
 
+    console.log(email)
+
+    usuarioModel.findOne({where: {email: email}})
+        .then((user) => {
+            if(user != null){
+                res.redirect("/register/Email já cadastrado")
+            }
+        })
+
     usuarioModel.create({
         email: email,
         senha: senha,
         nome: nome,
         cpf:cpf,
-        celular:celular
+        celular:celular,
+        tipo_permissao: "user"
     }).then(() => {
         const usuario = {
             email: email,
             nome: nome,
             senha: senha,
-            exp: Date.now() + (60000 * 60),
+            permissao: "user",
+            exp: Date.now() + ((60000 * 60) * 8),
         }
         const token = jwt.sign(usuario, process.env.SECRET_KEY)
         res.cookie("medcar_token", token, {
@@ -143,6 +153,11 @@ usuarioRouter.post("/changePass", async (req, res)=> {
 
 })
 
+usuarioRouter.post("/deslogar", (req,res) => {
+    res.clearCookie("medcar_token")
+    res.redirect("/")
+})
+
 usuarioRouter.post("/login", (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
@@ -157,7 +172,8 @@ usuarioRouter.post("/login", (req,res) => {
                 email: user.email,
                 nome: user.nome,
                 senha: user.senha,
-                exp: Date.now() + (60000 * 60),
+                permissao: user.tipo_permissao,
+                exp: Date.now() + ((60000 * 60) * 8),
             }
             const token = jwt.sign(usuario, process.env.SECRET_KEY)
             res.cookie("medcar_token", token, {
