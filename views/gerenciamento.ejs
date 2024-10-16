@@ -8,6 +8,7 @@
                 <th class="px-4 py-2 font-medium">Nome</th>
                 <th class="px-4 py-2 font-medium">CPF</th>
                 <th class="px-4 py-2 font-medium">Celular</th>
+                <th class="px-4 py-2 font-medium">Permissão</th>
                 <th class="px-4 py-2 font-medium">Ação</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                     <td class="px-4 py-2 border border-gray-400"><%= user.nome %></td>
                     <td class="px-4 py-2 border border-gray-400"><%= user.cpf ?? "Não informado" %></td>
                     <td class="px-4 py-2 border border-gray-400"><%= user.celular ?? "Não informado" %></td>
+                    <td class="px-4 py-2 border border-gray-400"><%= user.tipo_permissao %></td>
                     <td class="px-4 py-2 border border-gray-400">
                         <a href="/deleteUser/<%= user.email %>" class="text-red-500 hover:text-red-700">Deletar</a>
                     </td>
@@ -25,8 +27,6 @@
             <% }) %>
         </tbody>
     </table>
-
-    <a class="mt-4 rounded-lg bg-red-800 px-4 py-2 w-32 text-white mx-auto hover:bg-red-900 cursor-pointer" href="/gerenciamento/confirmarAdmin">Criar permissões</a>
 </div>
 
 <%- include('partials/footer.ejs') %>

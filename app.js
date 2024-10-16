@@ -20,7 +20,6 @@ app.use(auth)
 //Database connection and models
 const connection = require("./database/database")
 const usuarioModel = require("./database/usuarioModel")
-const permissaoModel = require("./database/permissoesModel")
 
 //Routers
 const usuarioRouter = require("./routes/usuario")
@@ -50,9 +49,9 @@ connection.authenticate()
         console.log("Não foi possivel conectar")
     })
 
-app.get("/", (req,res)=>{
-    res.render("home")
-})
+    app.get("/", (req,res)=>{
+        res.render("home")
+    })
 
 app.get("/register/:msg?", (req, res) => {
     let msg = req.params.msg ?? null

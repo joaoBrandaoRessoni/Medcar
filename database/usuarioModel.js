@@ -23,6 +23,11 @@ const usuario = connection.define('usuario', {
         type: sequelize.STRING(100),
         allowNull: false
     },
+    tipo_permissao: {
+        type: sequelize.STRING(100),
+        allowNull: false,
+        defautl: "user"
+    }
 })
 
 usuario.sync({force: false}).then(()=> {
