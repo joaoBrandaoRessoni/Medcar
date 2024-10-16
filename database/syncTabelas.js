@@ -24,10 +24,6 @@ async function syncAll(){
         console.log("Tabela de codigos criada!")
     })
     
-    await permissoes.sync({force: false}).then(()=> {
-        console.log("Tabela de permissoes criada!")
-    })
-    
 }
 
 syncAll();
