@@ -3,6 +3,7 @@ const usuarioRouter = express.Router()
 const usuarioModel = require("../database/usuarioModel")
 const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
+const servicosModel =  require("../database/servicosModel")
 const jwt = require('jsonwebtoken')
 
 usuarioRouter.post("/createUser", (req,res)=>{
@@ -165,7 +166,7 @@ usuarioRouter.post("/login", (req,res) => {
 
     usuarioModel.findOne({
         where:{email: email, senha: senha}
-    }).then((user)=>{
+    }).then(async(user)=>{
         if(user){
             const usuario = {
                 email: user.email,
@@ -178,17 +179,22 @@ usuarioRouter.post("/login", (req,res) => {
             res.cookie("medcar_token", token, {
                 httpOnly: true,
             })
-            res.redirect("/status")
+            const servicos = (await servicosModel.findAll({
+                where: { usuarioEmail: email },
+            })).map(servico => servico.descricao) || [];
+            res.render("status", {servicos: servicos})
         }else {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
     }).catch((erro) => {
         res.redirect("/")
+        console.log(erro)
     })
 })
 
 usuarioRouter.get("/status", (req,res) => {
-    res.render("status")
+    servicos = []
+    res.render("status", {servicos: servicos})
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {

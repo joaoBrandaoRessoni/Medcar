@@ -1,5 +1,6 @@
 const sequelize = require('sequelize')
 const connection = require('./database')
+const usuario = require('./usuarioModel')
 
 const codigo = connection.define('codigo', {
     cod:{
@@ -13,8 +14,10 @@ const codigo = connection.define('codigo', {
     }
 })
 
-codigo.sync({force: false}).then(()=> {
-    console.log("Tabela de codigos criada!")
+codigo.belongsTo(usuario, {
+    foreignKey: 'usuarioEmail',
+    targetKey: 'email',
+    onDelete: 'CASCADE'
 })
 
 module.exports = codigo

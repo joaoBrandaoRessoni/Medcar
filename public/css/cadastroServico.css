@@ -1,0 +1,113 @@
+:root {
+    --red: #AE3232;
+    --black: #202022;
+    --gray: #383838;
+    --gray-light: #C1C1C1;
+    --green: #1E972A;
+    --fundo: #EAEAEA;
+    --branco: #f8f5f5;
+    --fonte: Arial, Helvetica, sans-serif;
+
+}
+
+.divCadastro {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10%;
+    margin: auto;
+}
+
+.divForm {
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.textoPrincipal {
+    font-family: var(--fonte);
+    font-size: 200%;
+    color: var(--red);
+    padding-bottom: 3%;
+}
+
+.tabelaServicos {
+    width: 50%;
+}
+table{
+    width: 100%;
+    box-shadow: 1px 1px 2px var(--black);
+}
+
+tr, td, th{
+    border: 1px solid  var(--gray);
+   
+}
+th{
+   font-family: var(--fonte);
+   background-color: var(--gray-light);
+}
+
+.divServico{
+    padding-bottom: 2%;
+}
+
+.divCad{
+    padding-bottom: 3%;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+input{
+    width: 50%;
+    background-color: var(--fundo);
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 5px;
+    height: 32px;
+}
+
+form{
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+}
+
+.divLista{
+    padding-bottom: 3%;
+}
+.inputServico{
+    margin-left: 1%;
+}
+
+.btnServico{
+    background-color: var(--red);
+    color: var(--branco);
+    width: 20%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    font-family: var(--fonte);
+    display: flex;
+    justify-content: center;
+    font-size: 16.5px;
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 10px var(--black);
+    animation: fadeInAndFall 1s ease-out forwards;
+}
+
+.btnServico:hover {
+    background-color: var(--fundo);
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+.divCadBotao{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -179,7 +179,7 @@ nav {
     background-color: var(--red);
     color: var(--branco);
     width: 40%;
-    height: 56px;
+    height: 50px;
     display: flex;
     align-items: center;
     border-radius: 3px;
@@ -209,7 +209,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 10%;
-
+    margin-top: 4%;
 }
 
 .divFoto {
@@ -588,17 +588,4 @@ nav {
 .lib1-rodape:hover{
     color: var(--red);
     text-shadow: var(--black);
-}
-
-
-@keyframes fadeInAndFall {
-    0% {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
