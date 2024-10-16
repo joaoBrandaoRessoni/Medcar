@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken')
 
 const auth = (req,res,next) => {
     //Array com as rotas que não precisam de segurança JWT, sempre coloque '/' seguido do nome da rota 
-    const nonSecurePath = ["/", "/login", "/register", "/forgetPassword", "/createUser", "/validarEmail", "/validarCodigo", "/changePass"]
+    const nonSecurePath = ["login", "register", "forgetPassword", "createUser", "validarEmail", "validarCodigo", "changePass"]
     const adminPath = ["gerenciamento"]
+    //Caso a rota estiver na array irá passar direto sem a verificação de JWT
+    let path = req.path.split("/")[1]
+    if(nonSecurePath.includes(path) || path == "") return next()
 
     //Checking if are logged in
     let token = req.cookies.medcar_token
@@ -15,7 +18,7 @@ const auth = (req,res,next) => {
     }
 
     //Caso a rota estiver na array irá passar direto sem a verificação de JWT
-    if(nonSecurePath.includes(req.path)) return next()
+    if(nonSecurePath.includes(path)) return next()
 
     try{
         jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY, null, 
@@ -40,7 +43,7 @@ const auth = (req,res,next) => {
         }else if(erro.message == "Not have permission"){
             mensagem = "Você não possui permissão"
         }else{
-            mensagem = "Houve um erro, tente novamente mais tarde"
+            mensagem = "Houve um erro ao tentar fazer sua autenticação"
         }
         res.render("err/erro_mensagem", {erro_mensagem: mensagem})
     }

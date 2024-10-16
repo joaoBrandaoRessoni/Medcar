@@ -12,6 +12,15 @@ usuarioRouter.post("/createUser", (req,res)=>{
     let cpf = req.body.cpf ?? null
     let celular = req.body.celular ?? null
 
+    console.log(email)
+
+    usuarioModel.findOne({where: {email: email}})
+        .then((user) => {
+            if(user != null){
+                res.redirect("/register/Email já cadastrado")
+            }
+        })
+
     usuarioModel.create({
         email: email,
         senha: senha,
