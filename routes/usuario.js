@@ -31,7 +31,8 @@ usuarioRouter.post("/createUser", (req,res)=>{
         celular:celular,
         tipo_permissao: "user"
     }).then(() => {
-        const usuario = {
+        usuario = null;
+        let usuario = {
             email: email,
             nome: nome,
             senha: senha,
@@ -169,24 +170,18 @@ usuarioRouter.post("/login", (req,res) => {
         where:{email: email, senha: senha}
     }).then(async(user)=>{
         if(user){
-            const usuario = {
+            let usuario = {
                 email: user.email,
                 nome: user.nome,
                 senha: user.senha,
                 permissao: user.tipo_permissao,
                 exp: Date.now() + ((60000 * 60) * 8),
             }
-            const token = jwt.sign(usuario, process.env.SECRET_KEY)
+            let token = jwt.sign(usuario, process.env.SECRET_KEY)
             res.cookie("medcar_token", token, {
                 httpOnly: true,
             })
-            const servicos = (await servicosModel.findAll({
-                where: { usuarioEmail: email },
-            })).map(servico => servico.descricao) || [];
-            const placa = (await servicosModel.findOne({
-                where: { usuarioEmail: email },
-            })).placaCarro
-            res.render("status", {servicos: servicos, placa: placa})
+            res.redirect("status")
         }else {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
@@ -196,10 +191,21 @@ usuarioRouter.post("/login", (req,res) => {
     })
 })
 
-usuarioRouter.get("/status", (req,res) => {
-    servicos = []
-    placa = ''
-    res.render("status", {servicos: servicos, placa: placa})
+usuarioRouter.get("/status", async(req,res) => {
+    let email;
+    jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY,
+        (erro, decoded) => {
+            email = decoded.email
+        }
+    )
+
+    const servicos = (await servicosModel.findAll({
+        where: { usuarioEmail: email },
+    })).map(servico => servico.descricao) || [];
+    const placa = (await servicosModel.findOne({
+        where: { usuarioEmail: email },
+    })).placaCarro || []
+    res.render("status", { servicos: servicos, placa: placa })
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {
@@ -207,9 +213,9 @@ usuarioRouter.get("/deleteUser/:email", (req,res) => {
     usuarioModel.destroy({
         where: {email:email}
     }).then(() => {
-        res.redirect("/allUsers")
+        res.redirect("/gerenciamento")
     }).catch(() => {
-        res.redirect("/allUsers")
+        res.redirect("/gerenciamento")
     })
 })
 
