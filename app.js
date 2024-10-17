@@ -35,18 +35,6 @@ app.use(servicoRouter)
 
 app.use(adminRouter)
 
-//Checking if are logged in
-app.use((req,res,next) => {
-    let token = req.cookies.medcar_token
-    if(token != undefined){
-        res.locals.login = true
-    }
-    else{
-        res.locals.login = false
-    }
-    next()
-})
-
 connection.authenticate()
     .then(() => {
         console.log("Conectado ao banco")
@@ -56,6 +44,13 @@ connection.authenticate()
     })
 
     app.get("/", (req,res)=>{
+        let token = req.cookies.medcar_token
+        if (token != undefined) {
+            res.locals.login = true
+        }
+        else {
+            res.locals.login = false
+        }
         res.render("home")
     })
 
