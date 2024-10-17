@@ -5,6 +5,7 @@ const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
 const servicosModel =  require("../database/servicosModel")
 const jwt = require('jsonwebtoken')
+const { where } = require("sequelize")
 
 usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
@@ -182,7 +183,10 @@ usuarioRouter.post("/login", (req,res) => {
             const servicos = (await servicosModel.findAll({
                 where: { usuarioEmail: email },
             })).map(servico => servico.descricao) || [];
-            res.render("status", {servicos: servicos})
+            const placa = (await servicosModel.findOne({
+                where: { usuarioEmail: email },
+            })).placaCarro
+            res.render("status", {servicos: servicos, placa: placa})
         }else {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
@@ -194,7 +198,8 @@ usuarioRouter.post("/login", (req,res) => {
 
 usuarioRouter.get("/status", (req,res) => {
     servicos = []
-    res.render("status", {servicos: servicos})
+    placa = ''
+    res.render("status", {servicos: servicos, placa: placa})
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {

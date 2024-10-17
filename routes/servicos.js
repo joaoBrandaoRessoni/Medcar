@@ -45,9 +45,9 @@ servicoRouter.post("/saveservico", (req, res)=>{
             }).then((novoServico) => {
                 // Adiciona o novo serviço ao array servicos
                 servicos.push({
-                    id: novoServico.id, // Atribui o ID gerado pelo banco
+                    placa: novoServico.placaCarro,
                     descricao: novoServico.descricao
-                });
+                })
                 res.render('cadastroServico', { servicos });
                 console.log("Serviço inserido com sucesso.");
             }).catch((erro) => {
