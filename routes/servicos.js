@@ -14,7 +14,7 @@ servicoRouter.post("/saveservico", (req, res)=>{
         (erro, decoded) => {
             email = decoded.email
         }
-   )
+    )
    console.log(email)
 
     carrosModel.findOne({
@@ -51,12 +51,10 @@ servicoRouter.post("/saveservico", (req, res)=>{
                 res.render('cadastroServico', { servicos });
                 console.log("Serviço inserido com sucesso.");
             }).catch((erro) => {
-                console.log(erro);
                 res.status(500).send("Erro ao salvar o serviço.");
             })
         }
     }).catch((erro) => {
-        console.log(erro);
         res.status(500).send("Erro ao buscar o serviço existente.");
     })
 })
@@ -64,6 +62,29 @@ servicoRouter.post("/saveservico", (req, res)=>{
 servicoRouter.get("/cadastroServico", (req, res)=>{
     servicos = []
     res.render("cadastroServico", {servicos})
+})
+
+servicoRouter.get("/servicos", (req, res) => {
+    let email;
+    jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY,
+        (erro, decoded) => {
+            email = decoded.email
+        }
+    )
+
+    servicoModel.findAll({
+        where: {
+            usuarioEmail: email
+        }
+    }).then((servicos)=>{
+        if(servicos != undefined){
+            res.render("servicos", {servicos})
+        }
+        else{
+            res.render("servicos", {msg: "Sem serviços cadastrados"})
+        }
+    })
+
 })
 
 module.exports = servicoRouter

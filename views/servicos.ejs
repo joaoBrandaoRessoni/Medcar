@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+
+<div class="mt-28 ml-44">
+    <p class="text-2xl font-medium text-red-600">Serviços</p>
+</div>
+<div class="w-full flex justify-center flex-col items-center mb-16">
+    <% if(servicos){ %>
+        <table class="table-auto w-9/12 my-8 bg-gray-500 shadow-md rounded-lg marker:">
+            <thead class="bg-gray-400">
+                <tr>
+                    <th class="px-4 py-2 font-medium border-gray-300">Placa</th>
+                    <th class="px-4 py-2 font-medium border-gray-300">Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% servicos.forEach(servico=> { %>
+                    <tr class="text-center even:bg-gray-100 odd:bg-white">
+                        <td class="px-4 py-2 border border-gray-300">
+                            <%= servico.placaCarro %>
+                        </td>
+                        <td class="px-4 py-2 border border-gray-300">
+                            <%= servico.descricao %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% }else{ %>
+        <p><%= msg %></p>
+    <% } %>
+</div>
+
+<%- include('partials/footer.ejs') %>

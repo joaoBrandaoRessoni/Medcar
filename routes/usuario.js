@@ -201,7 +201,7 @@ usuarioRouter.get("/status", async(req,res) => {
     })).map(servico => servico.descricao) || [];
     const placa = (await servicosModel.findOne({
         where: { usuarioEmail: email },
-    })).placaCarro || []
+    }))
     res.render("status", { servicos: servicos, placa: placa })
 })
 
