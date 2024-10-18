@@ -24,6 +24,8 @@ const auth = (req,res,next) => {
     try{
         jwt.verify(req.cookies.medcar_token, process.env.SECRET_KEY, null, 
             (erro, decoded) => {
+                console.log(decoded.permissao == "user")
+                console.log(path)
                 if(Date.now() >= decoded.exp){
                     res.locals.login = false
                     throw new Error("jwt has expired")
