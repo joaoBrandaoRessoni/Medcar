@@ -2,7 +2,6 @@ const usuario = require('./usuarioModel')
 const carros = require('./carrosModel')
 const codigo = require('./codigoModel')
 const servicos = require('./servicosModel')
-const permissoes = require('./permissoesModel')
 const sequelize = require('./database')
 
 async function syncAll(){
