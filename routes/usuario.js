@@ -14,8 +14,6 @@ usuarioRouter.post("/createUser", (req,res)=>{
     let cpf = req.body.cpf ?? null
     let celular = req.body.celular ?? null
 
-    console.log(email)
-
     usuarioModel.findOne({where: {email: email}})
         .then((user) => {
             if(user != null){
@@ -150,7 +148,7 @@ usuarioRouter.post("/changePass", async (req, res)=> {
         codigoModel.destroy({
             where: {cod: codigo}
         })
-        res.redirect("/")
+        res.redirect("/login")
     })
 
 })
@@ -186,8 +184,7 @@ usuarioRouter.post("/login", (req,res) => {
             res.render("err/erro_mensagem", {erro_mensagem: "Usuário não encontrado"})
         }
     }).catch((erro) => {
-        res.redirect("/")
-        console.log(erro)
+        res.redirect("/") 
     })
 })
 
