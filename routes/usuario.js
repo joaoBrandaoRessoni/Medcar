@@ -4,6 +4,7 @@ const usuarioModel = require("../database/usuarioModel")
 const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
 const servicosModel =  require("../database/servicosModel")
+const carrosModel = require("../database/carrosModel")
 const jwt = require('jsonwebtoken')
 const { where } = require("sequelize")
 
@@ -199,10 +200,10 @@ usuarioRouter.get("/status", async(req,res) => {
     const servicos = (await servicosModel.findAll({
         where: { usuarioEmail: email },
     })).map(servico => servico.descricao) || [];
-    const placa = (await servicosModel.findOne({
+    const placas = (await carrosModel.findAll({
         where: { usuarioEmail: email },
-    })).placaCarro || []
-    res.render("status", { servicos: servicos, placa: placa })
+    })).map(placa => placa.placa) || [];
+    res.render("status", { servicos: servicos, placas: placas })
 })
 
 usuarioRouter.get("/deleteUser/:email", (req,res) => {
