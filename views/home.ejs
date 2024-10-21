@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div id="sobre" class="divQuemSomos" >
+        <div id="sobre" class="divQuemSomos">
             <div class="divTexto">
                 <p class="titulo">Quem somos?</p>
                 <p class="sub">
@@ -33,7 +33,7 @@
 
             <div class="divFoto">
                 <img class="imgDonos" src="/img/donos.jpg" alt="Foto donos">
-                <figcaption style="font-size: 12px; padding: 10px; margin: auto; ">Dono da Medcar, Alessandro junto com
+                <figcaption style="font-size: 12px; padding: 10px; margin: auto; ">Alessandro, proprietário da Medcar,  junto com
                     seu filho e sócio Matheus</figcaption>
             </div>
 
@@ -58,7 +58,9 @@
 
         <div class="container" id="servicos">
 
-            <p class="tituloServico">Nossos serviços</h2>
+            <div style="padding-bottom: 5%; display: flex; align-items: start;">
+                <p class="tituloServico">Nossos serviços</h2>
+            </div>
             <div class="row">
 
                 <div class="iconeServico">
@@ -184,11 +186,22 @@
 
             </div>
         </div>
-        <div>
-            <div class="galeria">
-                <div class="divGaleria">
-                    <p class="titulo">Galeria</p>
+
+        <div style="margin-bottom: 5%;">
+            <div style="margin-left: 8%;">
+                <p class="titulo">Galeria</p>
             </div>
+            <div class="carrossel">
+                <div><img class="imgCarrossel" src="/img/aparelho.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/balanceamento2.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/aparelho2.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/aparelho03.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/dentroOficina.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/parteinterna.jpg" alt=""></div>
+                <div><img class="imgCarrossel" src="/img/carro.jpg" alt=""></div>
+            </div>
+        </div>
+
         </div>
 
 
@@ -196,11 +209,14 @@
             <div class="divTxtorcamento">
                 <p class="titulo">Avaliações</p>
                 <p class="subtituloAval">Solicite seu orçamento!</p>
-                <p class="sub">Contamos com uma equipe de profissionais qualificados na área. São mais de 38 anos de experiência no mercado de trabalho! Nossos produtos e equipamentos são de marcas que garantem a nossa qualidade. <strong> Parcelamos no cartão até em 10 vezes sem juros.</strong>
+                <p class="sub">Contamos com uma equipe de profissionais qualificados na área. São mais de 38 anos de
+                    experiência no mercado de trabalho! Nossos produtos e equipamentos são de marcas que garantem a
+                    nossa qualidade. <strong> Parcelamos no cartão até em 10 vezes sem juros.</strong>
                 </p>
-             
+
                 <div class="divBtnOrcamento">
-                    <a class="btnOrcamento" href="https://api.whatsapp.com/send?phone=5519994647675">Solicite um orçamento</a>
+                    <a class="btnOrcamento" href="https://api.whatsapp.com/send?phone=5519994647675">Solicite um
+                        orçamento</a>
                 </div>
 
             </div>
@@ -212,7 +228,8 @@
                         <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     </div>
 
-                    <p class="t2">"Excelente profissionais, ótimo atendimento e estão sempre prontos pra atender os clientes na hora que precisamos. O que mais acho legal (honestidade). Parabéns galera!"</p>
+                    <p class="t2">"Excelente profissionais, ótimo atendimento e estão sempre prontos pra atender os
+                        clientes na hora que precisamos. O que mais acho legal (honestidade). Parabéns galera!"</p>
                 </div>
 
 
@@ -222,7 +239,9 @@
                         <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     </div>
 
-                    <p class="t2">"Profissionais qualificados, equipamentos de última geração, e o mais importante pessoal de extrema confiança! Tudo muito limpo e organizado, além de um Atendimento nota 1000!"</p>
+                    <p class="t2">"Profissionais qualificados, equipamentos de última geração, e o mais importante
+                        pessoal de extrema confiança! Tudo muito limpo e organizado, além de um Atendimento nota 1000!"
+                    </p>
                 </div>
                 <div class="coment">
                     <div class="partecima">
@@ -230,7 +249,8 @@
                         <p class="star"> &#9733 &#9733 &#9733 &#9733 &#9733</p>
                     </div>
 
-                    <p class="t2">"Lugar onde se encontra honestidade, serviços pontuais e tem tudo, atendimento camarada e onde os valores são justos."</p>
+                    <p class="t2">"Lugar onde se encontra honestidade, serviços pontuais e tem tudo, atendimento
+                        camarada e onde os valores são justos."</p>
                 </div>
 
             </div>
@@ -240,4 +260,34 @@
 
     </main>
 
+
+
     <%- include('partials/footer.ejs') %>
+
+        <script>
+            $('.carrossel').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
+            })
+        </script>

@@ -16,6 +16,7 @@ body {
     margin: 0;
     margin: auto;
     font-family: var(--fonte);
+    overflow-x: hidden;
 }
 
 /* Cabeçalho */
@@ -57,7 +58,7 @@ header.cabecalho.scrolled {
 .linkMenu {
     color: var(--branco);
     font-family: var(--fonte);
-    padding: 3%;
+    padding: 2%;
     font-size: 15px;
     position: relative;
     text-decoration: none;
@@ -98,26 +99,30 @@ header.cabecalho.scrolled {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 2%;
     padding: 2%;
-    width: 70%
+    width: 75%
 }
 
-nav {
+.menubar {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+
 }
 
 .btnMenu {
-    padding: 5px;
+    padding: 2%;
     border: 1px solid var(--red);
-    font-family: var(--fonte);
     color: var(--branco);
+    font-family: var(--fonte);
     width: 90px;
     text-align: center;
     border-radius: 3px;
-    font-size: 15px;
+    font-size: 14px;
 }
-
 .btnMenu:hover {
     background-color: var(--red);
 }
@@ -125,6 +130,55 @@ nav {
 .linkMenu:hover::after {
     text-decoration: dotted;
 }
+
+
+.linkbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropdown {
+    width: 23%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.dropdown-content {
+    background-color: var(--gray-light);
+    display: none;
+    position: absolute;
+    width: 1190%;
+    margin-top: 30%;
+    columns: 4;
+    border-radius: 2px;
+    font-family: var(--fonte);
+    box-shadow: 1px 1px 5px var(--black);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    font-size: 14px;
+}
+.dropdown-item:hover {
+    display: block;
+    font-size: 14px;
+    color:var(--red);
+    background-color: var(--fundo);
+    width: 100%;
+
+}
+.dropdown-content a {
+    padding: 3%;
+}
+
 
 /* Parte inicial do site */
 .divImagem {
@@ -388,6 +442,48 @@ nav {
     margin-left: 5%;
 }
 
+
+.galeria{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+.titulo3{
+    font-family: var(--font-titulo);
+    padding: 15px 0;
+    margin: 0 20px;
+}
+.textoparte3{
+    font-family: var(--font-texto);
+    font-size: 15px;
+    padding: 0 10px 20px 0;
+    margin: 0 22px 0 20px;
+    text-align: justify;
+    line-height: 20px;
+}
+.fotogaleria{
+    width: 25%;
+    border: 0px solid rgba(0, 0, 0, 0.459);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.418);
+    border-radius: 5px;
+    
+}
+.fotog{
+    width: 100%;
+    height: auto;
+}
+
+.data{
+    font-size: 11px;
+    text-align: center;
+    font-family: var(--font-texto);
+}
+.descricao{
+    font-size: 14px;
+    text-align: center;
+    font-family: var(--font-texto);
+}
 /* Avaliação */
 .avaliacao {
     width: 100%;
@@ -448,10 +544,12 @@ nav {
     border: 1px solid var(--red);
     border-radius: 5px;
     margin-bottom: 2%;
+    padding: 1%;
+    box-shadow: 1px 1px 5px var(--gray);
 }
 
 .partecima {
-    width: 47%;
+    width: 48%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -479,24 +577,45 @@ nav {
     letter-spacing: .5px;
 }
 
+/* Carrossel - Galeria */
+.carrossel {
+    width: 80%; 
+    margin: 0 auto;
+    padding: 2%;
+    
+}
+.imgCarrossel{
+    width: 80%;
+    height:80%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px black;
+}
+
+/* Cor das setas */
+.carrossel .slick-prev::before,
+.carrossel .slick-next::before {
+    color: gray !important; 
+    font-size: 35px;
+}
+
+
 /* Rodape */
 
 .footer-rodape-certo{
-    height:350px;
     width: 100%;
     background-color: var(--black);
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0 2%;
-
-   
+    padding: 2% 0;   
 }
 .footer-rodape{
     height: auto;
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    align-items: center;
+    justify-content: space-between;
     background-color: var(--black);
-    padding-top: 1.5%
+    padding-top: 1.5%;
+
 }
 .icon-rodape{
     width: 30px;
@@ -510,21 +629,29 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 .rodape_logo{
     display: flex;
     flex-direction: column;
     align-self: center;
+
 }
 .rodape_logo1{
     width:160px;
     padding: 20px;
-    padding-bottom: 40px;
+    
+}
+.textoNS-rodape{
+    height: auto;
+    width: 80%;
 }
 .texto-rodape{
-    font-size: 14px;
+    font-size: 15px;
     color: var(--branco);
     font-family: var(--fonte);
+    padding-bottom: 2%;
+   
 }
 .item-rodape{
     display: flex;
@@ -533,40 +660,51 @@ nav {
     width: 30%;
     height: auto;
     justify-content: center;
+    
+
 }
 
 .itemN-rodape{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--fonte);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 70%; 
+    width: 80%; 
 }
-
 
 
 .parteN-rodape{
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 200px;
+    align-items: center;
+ 
+   
 }
 
 .parteNS-rodape{
     width: 50%;
     display: flex;
     justify-content: center;
-    height: 200px;
-}
+    align-items: center;
+    height: auto;
+    padding: 0 5% 14% 5%;
 
-.e50-rodape,.lib1-rodape,#e30-rodape{
+}
+ p.lib1-rodape{
+    font-size: 14px;
+    font-family: var(--fonte);
+    color: var(--fundo);
+    padding: 2% 0;
+}
+.e50-rodape,#e30-rodape{
     text-decoration: none;
     color: var(--branco);
-    font-size: 13px;
+    font-size: 14px;
     font-family: var(--fonte);
-    line-height: 20px;
-    font-family:Arial, Helvetica, sans-serif;
+
 }
 #e30-rodape:hover{
     color:var(--red);
@@ -581,11 +719,12 @@ nav {
 
 .lib1-rodape{
     line-height: 12px;
-    font-size: 13px;
-    margin: 0 0 10px;
+    margin: 0 0 5%;
 }
 
 .lib1-rodape:hover{
     color: var(--red);
     text-shadow: var(--black);
 }
+
+
