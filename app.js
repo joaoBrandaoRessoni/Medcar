@@ -62,6 +62,11 @@ app.get("/allUsers", (req,res) => {
     })
 })
 
+app.get("/servicos", (req,res) => {
+    res.render("servicos");
+})
+
+
 app.listen(8181, (erro) => {
     if(erro){
         console.log("Erro")
