@@ -64,7 +64,7 @@ suporteRouter.post("/suporte/responder/:id", (req, res) => {
     })
 })
 
-suporteRouter.get("/suporte/perguntas/gerenciamento", (req,res) => {
+suporteRouter.get("/suporteAdm/perguntas/gerenciamento", (req,res) => {
     perguntaModel.findAll({include: "usuario"}).then(perguntas => {
         res.render("todasPerguntas", {"perguntas": perguntas})
     })

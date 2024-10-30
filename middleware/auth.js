@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const auth = (req,res,next) => {
     //Array com as rotas que não precisam de segurança JWT, sempre coloque '/' seguido do nome da rota 
-    const nonSecurePath = ["login", "register", "forgetPassword", "createUser", "validarEmail", "validarCodigo", "changePass"]
+    const nonSecurePath = ["login", "register", "forgetPassword", "createUser", "validarEmail", "validarCodigo", "changePass", "suporteAdm"]
     const adminPath = ["gerenciamento", "cadastroServico"]
     
     //Checking if are logged in
