@@ -28,10 +28,12 @@ const usuarioModel = require("./database/usuarioModel")
 const usuarioRouter = require("./routes/usuario")
 const servicoRouter = require("./routes/servicos")
 const adminRouter = require("./routes/admin")
+const suporteRouter = require("./routes/suporte")
 
 //Set routers on app
 app.use(usuarioRouter)
 app.use(servicoRouter)
+app.use(suporteRouter)
 
 app.use(adminRouter)
 

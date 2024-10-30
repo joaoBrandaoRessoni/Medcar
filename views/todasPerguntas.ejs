@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mx-auto my-20 flex flex-col justify-center items-center">
+    <div class="w-8/12">
+        <h1 class="text-center text-2xl font-bold border-b-2 border-black pb-4 mb-4">Perguntas</h1>
+        <% if(perguntas.length == 0) { %>
+            <b>Nenhuma pergunta até o momento</b>
+        <% } %>
+
+        <% perguntas.forEach(e => { %>
+            <a class="block hover:bg-gray-300 py-4 px-4 border-black shadow-lg mb-5" href="/suporte/pergunta/<%= e.id %>">
+                <div class="flex gap-4">
+                    <h1 class="inline"><%= e.titulo %> | </h1>
+                    <p class="text-ellipsis max-w-96 overflow-hidden whitespace-nowrap"><%= e.pergunta %></p>
+                </div>
+                <div class="text-end">- por <b><%= e.usuario.nome %></b></div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

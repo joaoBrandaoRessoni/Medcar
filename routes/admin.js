@@ -21,6 +21,4 @@ adminRouter.get("/gerenciamento/createTypePermission", (req,res) => {
     }
 })
 
-
-
 module.exports = adminRouter
