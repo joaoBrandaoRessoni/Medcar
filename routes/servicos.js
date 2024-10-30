@@ -15,8 +15,7 @@ servicoRouter.post("/saveservico", (req, res)=>{
             email = decoded.email
         }
    )
-   console.log(email)
-
+   
     carrosModel.findOne({
         where:{placa: placa}
     }).then((cad) =>{

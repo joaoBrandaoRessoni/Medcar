@@ -1,0 +1,34 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container mx-auto my-20 flex flex-col justify-center items-center">
+    <div class="border-b-black border-b-2 pb-8 w-6/12">
+        <h1 class="text-center text-2xl font-bold">Envie uma pergunta</h1>
+        <form action="/suporte/perguntar" method="post" class="w-full">
+            <label>Título</label>
+            <input type="text" name="titulo" id="titulo" class="h-10 w-full rounded-e-lg rounded-s-lg border border-gray-500 bg-slate-400/30 p-3 text-gray-800 placeholder:text-gray-600">
+
+            <label>Descrição</label>
+            <textarea name="pergunta" id="pergunta" class="w-full rounded-e-lg rounded-s-lg border border-gray-500 bg-slate-400/30 p-3 text-gray-800 placeholder:text-gray-600"></textarea>
+
+            <button type="submit" class="mt-4 rounded-lg bg-red-800 px-4 py-2 w-50 text-white mx-auto hover:bg-red-900 cursor-pointer">Enviar pergunta</button>
+        </form>
+    </div>
+    <div class="w-6/12">
+        <h1 class="text-center text-2xl font-bold">Suas perguntas</h1>
+        <% if(perguntas.length == 0){ %>
+            <b>Você não tem nenhuma pergunta</b>
+        <% } %>
+
+        <% perguntas.forEach(e => { %>
+            <a class="block hover:bg-gray-300 py-4 px-4 border-black shadow-lg mb-5" href="/suporte/pergunta/<%= e.id %>">
+                <div class="flex gap-4">
+                    <h1 class="inline"><%= e.titulo %> | </h1>
+                    <p class="text-ellipsis max-w-96 overflow-hidden whitespace-nowrap"><%= e.pergunta %></p>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
+
