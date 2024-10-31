@@ -11,10 +11,17 @@
       </div>
       <div class="mt-10 w-2/3">
         <p class="mt-2 text-gray-700"><span class="font-semibold">Placa:</span>
-            <%= placa %>
+          <% if (placas.length !=0) { %>
+            <% placas.forEach(placa=> { %>
+              <%= placa %>
+            <% }) %>
+          <% } else { %>
+            <p>Sem placas cadastrados.</p>
+          <% } %>
+            
         </p>
           <span class="font-semibold">Serviço:</span> 
-          <% if (Array.isArray(servicos)) { %>
+          <% if (servicos.length != 0) { %>
             <% servicos.forEach(servico => { %>
                 <%= servico %>,
             <% }) %>

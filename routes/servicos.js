@@ -15,7 +15,7 @@ servicoRouter.post("/saveservico", (req, res)=>{
             email = decoded.email
         }
    )
-   
+  
     carrosModel.findOne({
         where:{placa: placa}
     }).then((cad) =>{
@@ -40,7 +40,7 @@ servicoRouter.post("/saveservico", (req, res)=>{
             servicoModel.create({
                 placaCarro: placa,
                 usuarioEmail: email,
-                descricao: servico
+                descricao: servico,
             }).then((novoServico) => {
                 // Adiciona o novo serviço ao array servicos
                 servicos.push({
@@ -48,14 +48,11 @@ servicoRouter.post("/saveservico", (req, res)=>{
                     descricao: novoServico.descricao
                 })
                 res.render('cadastroServico', { servicos });
-                console.log("Serviço inserido com sucesso.");
             }).catch((erro) => {
-                console.log(erro);
                 res.status(500).send("Erro ao salvar o serviço.");
             })
         }
     }).catch((erro) => {
-        console.log(erro);
         res.status(500).send("Erro ao buscar o serviço existente.");
     })
 })

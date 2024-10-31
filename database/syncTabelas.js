@@ -7,22 +7,14 @@ const sequelize = require('./database')
 async function syncAll(){
     await sequelize.sync({force: false})
 
-    await usuario.sync({force: false}).then(()=> {
-        console.log("Tabela de usuarios criada!")
-    })
+    await usuario.sync({force: false})
     
-    await carros.sync({force: false}).then(()=> {
-        console.log("Tabela de carros criada!")
-    })
+    await carros.sync({force: false})
     
-    await servicos.sync({force: false}).then(()=> {
-        console.log("Tabela de Serviços criada!")
-    })
+    await servicos.sync({force: false})
     
-    await codigo.sync({force: false}).then(()=> {
-        console.log("Tabela de codigos criada!")
-    })
-    
+    await codigo.sync({force: false})
+
 }
 
 syncAll();

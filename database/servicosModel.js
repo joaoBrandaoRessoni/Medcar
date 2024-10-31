@@ -21,8 +21,13 @@ const servicos = connection.define('servicos', {
     descricao:{
         type: sequelize.TEXT,
         allowNull: false
+    },
+    dataSaida:{
+        type: sequelize.DATEONLY,
+        allowNull: true
     }
 })
+
 
 servicos.belongsTo(carros, {
     foreignKey: 'placaCarro',
