@@ -6,7 +6,6 @@ const nodemailer = require("nodemailer")
 const servicosModel =  require("../database/servicosModel")
 const carrosModel = require("../database/carrosModel")
 const jwt = require('jsonwebtoken')
-const { where } = require("sequelize")
 
 usuarioRouter.post("/createUser", (req,res)=>{
     let email = req.body.email
@@ -30,7 +29,6 @@ usuarioRouter.post("/createUser", (req,res)=>{
         celular:celular,
         tipo_permissao: "user"
     }).then(() => {
-        usuario = null;
         let usuario = {
             email: email,
             nome: nome,
@@ -44,16 +42,8 @@ usuarioRouter.post("/createUser", (req,res)=>{
         })
         res.redirect("/status")
     }).catch((erro) => {
-        if(erro.errors[0].type){
-            if(erro.errors[0].type == "unique violation"){
-                res.redirect("/register/Email já cadastrado")
-            }else{
-                res.redirect("/register/Não foi possível completar o cadastro")
-            }
-            
-        }else{
-            res.redirect("/register/Não foi possível fazer o cadastro")
-        }
+
+        res.redirect("/register/Não foi possível fazer o cadastro")
     })
 })
 
