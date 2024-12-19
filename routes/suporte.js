@@ -1,8 +1,8 @@
 const express = require("express")
 const suporteRouter = express.Router()
-const perguntaModel = require('../database/perguntaModel')
-const respostaModel = require('../database/respostaModel')
-const usuarioModel = require('../database/usuarioModel')
+// const perguntaModel = require('../database/perguntaModel')
+// const respostaModel = require('../database/respostaModel')
+// const usuarioModel = require('../database/usuarioModel')
 const jwt = require('jsonwebtoken')
 
 suporteRouter.get("/suporte", (req, res) => {
