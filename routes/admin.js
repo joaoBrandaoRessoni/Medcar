@@ -1,7 +1,7 @@
 const express = require("express")
 const adminRouter = express.Router()
-const usuarioModel = require("../database/usuarioModel")
-const permissoesModel = require("../database/usuarioModel")
+// const usuarioModel = require("../database/usuarioModel")
+// const permissoesModel = require("../database/usuarioModel")
 const jwt = require('jsonwebtoken')
 
 adminRouter.get("/gerenciamento", (req,res) => {
