@@ -1,7 +1,7 @@
 const express = require("express")
 const servicoRouter = express.Router()
-const carrosModel = require("../database/carrosModel")
-const servicoModel =  require("../database/servicosModel")
+// const carrosModel = require("../database/carrosModel")
+// const servicoModel =  require("../database/servicosModel")
 const jwt = require('jsonwebtoken')
 
 let servicos = []
