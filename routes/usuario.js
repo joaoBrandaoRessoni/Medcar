@@ -1,10 +1,10 @@
 const express = require("express")
 const usuarioRouter = express.Router()
-const usuarioModel = require("../database/usuarioModel")
-const codigoModel = require("../database/codigoModel")
+// const usuarioModel = require("../database/usuarioModel")
+// const codigoModel = require("../database/codigoModel")
 const nodemailer = require("nodemailer")
-const servicosModel =  require("../database/servicosModel")
-const carrosModel = require("../database/carrosModel")
+// const servicosModel =  require("../database/servicosModel")
+// const carrosModel = require("../database/carrosModel")
 const jwt = require('jsonwebtoken')
 
 usuarioRouter.post("/createUser", (req,res)=>{
