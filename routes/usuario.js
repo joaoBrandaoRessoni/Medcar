@@ -85,7 +85,7 @@ usuarioRouter.post("/validarEmail", (req,res) => {
             secure: true,
             auth:{
                 user: 'igor.pirola@sou.fae.br',
-                pass: 'vklswiwxmzjhhnug',
+                pass: '',
             }
         })
 
